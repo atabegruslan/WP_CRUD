@@ -1,0 +1,278 @@
+/*
+Theme Name: Travellers Forum
+Author: Ruslan Aliyev
+Author URI: https://github.com/atabegruslan
+Description: Travellers Forum
+Version: 2000.0
+Text Domain: ruslan-website.com
+*/
+
+.container {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    background-color: #f1f1f1;
+}
+
+.row {
+    margin: 0 !important;
+}
+
+div[id^="header_"] div[class^="col-"], div[id^="footer_"] div[class^="col-"] {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+#header_1 * {
+    background-color: #00abe7;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+#header_2 {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#header_2 .filters {
+    padding: 5px;
+}
+#header_2 #searchsubmit, #header_2 #search {
+    height: 34px;
+}
+#header_3 *, #footer * {
+    background-color: #000000;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+ul.uac_menu {
+    padding: 0;
+    list-style: none;
+    background: #f2f2f2;
+    text-align: justify;
+}
+
+ul.uac_menu:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+
+ul.uac_menu li{
+    display: inline-block;
+    position: relative;
+    line-height: 21px;
+}
+
+ul.uac_menu li a{
+    display: block;
+    padding: 8px 25px;
+    color: #333;
+    text-decoration: none;
+}
+
+ul.uac_menu li a:hover{
+    color: #fff;
+    background: #939393;
+}
+
+ul.uac_menu li ul{
+    padding: 0;
+    background: #f2f2f2;
+    display: none;
+    position: absolute;
+    width: 500px; /*change later*/
+}
+
+ul.uac_menu li:hover ul{
+    display: block;
+    z-index: 10;
+    background: #00abe7;
+}
+ul.uac_menu li ul li{
+    display: inline-block;
+}
+
+.um {
+    opacity: 1 !important;
+}
+
+ul.misc_menu {
+    padding: 0;
+    list-style: none;
+    background: #f2f2f2;
+    text-align: justify;
+    min-width: 500px;
+}
+
+ul.misc_menu:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+
+ul.misc_menu li{
+    display: inline-block;
+    position: relative;
+    line-height: 21px;
+}
+
+ul.misc_menu li a{
+    display: block;
+    padding: 8px 25px;
+    color: #333;
+    text-decoration: none;
+}
+
+ul.contents_menu {
+    padding: 0;
+    list-style: none;
+    background: #f2f2f2;
+    text-align: justify;
+    min-width: 500px;
+}
+
+ul.contents_menu:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+
+ul.contents_menu li{
+    display: inline-block;
+    position: relative;
+    line-height: 21px;
+}
+
+ul.contents_menu li a{
+    display: block;
+    padding: 8px 25px;
+    color: #333;
+    text-decoration: none;
+}
+
+img#expandedImg {
+    width: 80%;
+    height: 600px;
+    object-fit: scale-down;
+    margin: auto;
+    display: block;
+}
+
+ul.bxslider img {
+    width: 80%;
+    height: 300px;
+    object-fit: scale-down;
+    margin: auto;
+    display: block;
+}
+
+.item_entry {
+    border-style: outset;
+    width: 80%;
+    margin: auto !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.slide_entry {
+    border-style: outset;
+    padding: 10px;
+}
+
+img.feature_img {
+    height: 150px;
+    object-fit: scale-down;
+    margin: auto;
+    display: block;
+}
+
+ul.post-categories {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.post-categories li {
+    display: inline;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+ul.post-categories li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.item_img {
+    border-style: inset;
+    padding: 0 !important;
+}
+
+.item_img, .item_annotation {
+    padding: 10px;
+}
+
+div.single_post img {
+    vertical-align: middle;
+    height: 150px;
+    object-fit: scale-down;
+    margin: auto;
+    display: block;
+}
+
+div.news_bulletin {
+    margin: 20px;
+    border-style: outset;
+}
+div.news_bulletin div.news_excerpt, div.news_bulletin h3 {
+    margin: 15px;
+}
+div.news_bulletin div.news_img {
+    margin: 15px;
+}
+div.news_bulletin div.news_img img {
+    width: 100%;
+}
+
+div.filters {
+    display: inline;
+}
+
+div.post_type p {
+    padding: 5px;
+    display: inline;
+    border-radius: 5px;
+    color: black;
+}
+div.post_type {
+    margin: 0 0 10px;
+}
+
+div#front_edit_gallery div.acf-gallery-toolbar, 
+div#front_create_gallery div.acf-gallery-toolbar {
+    height: 56px !important;
+}
+div#front_edit_gallery div.acf-form-submit input[type=submit], 
+div#front_create_gallery div.acf-form-submit input[type=submit] {
+    margin-left: 12px !important;
+}
+div#front_edit_gallery div.acf-label {
+    display: none !important;
+}
+
+div#large_view_frame, 
+div#front_edit_gallery {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+}
+
+div#header_1 div.menu-misc-menu-container, 
+div#header_1 div.menu-user-account-container {
+    display: table;
+    margin: 0 auto;
+}
