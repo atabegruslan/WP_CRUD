@@ -1,3 +1,7 @@
+## Site
+
+http://ruslan-website.com/travellers_forum/
+
 ## Start with a minimal theme
 
 1. http://wp-puzzle.com/basic/
@@ -156,7 +160,7 @@ https://youtu.be/1RKQDJaXJ6Q
 
 Install, Activate and follow through with automatic Setup
 
-![wp-event-manager_setup]()
+![wp-event-manager_setup](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/wp-event-manager_setup.png)
 
 A few pages will be automatically added for you:
 
@@ -176,7 +180,7 @@ wp-admin > Event Listings > Settings > Event Submission tab > tick `Enable multi
 
 wp-admin > Event Listings > Field Editor > Event fields > Add Field :
 
-![Event Listings include categories]()
+![Event_Listings-include_categories](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/Event_Listings-include_categories.png)
 
 wp-admin > Event Listings > Event Categories : here you can create your custom categories for your events
 
@@ -303,11 +307,11 @@ On `single-custom_post.php` page, put `acf_form_head()` at the top and append: `
  
 To include Featured-Image and Categories, create new custom fields for them:
 
-![front_post_album_1]()
+![front_post_album_1](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/front_post_album_1.PNG)
 
-![front_post_album_2]()
+![front_post_album_2](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/front_post_album_2.PNG)
 
-![front_post_album_3]()
+![front_post_album_3](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/front_post_album_3.PNG)
 
 #### Create
 
@@ -392,3 +396,7 @@ add_action('wp_footer', 'add_style_js', 5);
 	echo 'Test';
 ?>
 ```
+
+## Upload to server
+
+https://www.wpbeginner.com/wp-tutorials/how-to-move-wordpress-from-local-server-to-live-site/
