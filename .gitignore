@@ -28,3 +28,6 @@ node_modules/
 # others
 .DS_Store
 .idea
+
+# config file
+wp-config.php
