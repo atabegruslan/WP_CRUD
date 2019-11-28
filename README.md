@@ -1,6 +1,6 @@
 ## Site
 
-http://ruslan-website.com/travellers_forum/
+http://ruslan-website.com/wp/travellers_forum/
 
 ## Start with a minimal theme
 
@@ -397,6 +397,16 @@ add_action('wp_footer', 'add_style_js', 5);
 ?>
 ```
 
+## Pagination
+- https://codex.wordpress.org/Pagination
+- https://codex.wordpress.org/Function_Reference/paginate_links
+- https://www.wpexplorer.com/pagination-wordpress-theme/
+
 ## Upload to server
 
-https://www.wpbeginner.com/wp-tutorials/how-to-move-wordpress-from-local-server-to-live-site/
+- https://www.wpbeginner.com/wp-tutorials/how-to-move-wordpress-from-local-server-to-live-site/
+- Then check and update the home URL of the home menu item.
+
+## Social Login
+
+https://wpbuffs.com/integrate-facebook-login/

@@ -11,7 +11,8 @@
             maxSlides: 3,
             moveSlides: 3,
             slideWidth: 1000,
-            slideMargin: 50
+            slideMargin: 50,
+            touchEnabled: (navigator.maxTouchPoints > 0), // Mobile touch issue: https://github.com/stevenwanderski/bxslider-4/issues/1240 
         });
 
         // Gallery
@@ -46,6 +47,17 @@
 
         footerToBottom();
 
+        // Gallery
+        var expandImg = $("#expandedImg");
+
+        $("img.gallery_slide").each(function() {
+            var gallerySlide = new Hammer(this);
+
+            gallerySlide.on("tap press", function(ev) {
+                expandImg.attr('src', $(ev.target).attr("src"));
+            });    
+        });        
+
         // WISIWIG Editor Input
         $('textarea#contents').froalaEditor({
             fullPage: true
@@ -64,7 +76,7 @@
         //     templateResult: templateResult
         // }).change( function(e){
         //     $(e.target).valid();
-        // });
+        // });    
     });
 
 })(jQuery);
@@ -78,10 +90,4 @@ function footerToBottom()
     {
         jQuery("#footer").offset({ top: correctFooterTop });
     }
-}
-
-// For gallery single view
-function changeImg(img) {
-    var expandImg = jQuery("#expandedImg");
-    expandImg.attr('src', img.src);
 }

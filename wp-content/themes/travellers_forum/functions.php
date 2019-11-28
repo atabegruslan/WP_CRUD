@@ -68,6 +68,9 @@ function my_register_scripts()
 
 	// Multi-Selector Input
 	// wp_register_script( 'select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.min.js' );
+
+	// For mobiles
+	wp_register_script( 'hammer', 'https://hammerjs.github.io/dist/hammer.js' );
 }
 add_action('init', 'my_register_scripts');
 
@@ -95,6 +98,9 @@ function my_enqueue_scripts()
 		// Multi-Selector Input
 		// wp_enqueue_script( 'select2' );
 	}
+
+	// For mobiles
+	wp_enqueue_script( 'hammer' );
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue_scripts' );
 
@@ -197,3 +203,51 @@ function dropdown_filter($output)
     return $output;
 }
 add_filter('wp_dropdown_cats', 'dropdown_filter', 10, 2);
+
+// Pagination
+if (!function_exists('wpex_pagination'))
+{	
+	function wpex_pagination()
+	{
+		global $wp_query;
+
+		$prev_arrow = is_rtl()
+			? '<img src="' . get_template_directory_uri() . '/images/btn_back.png" alt="prev page" />'
+			: '<img src="' . get_template_directory_uri() . '/images/btn_back.png" alt="prev page" />';
+		$next_arrow = is_rtl()
+			? '<img src="' . get_template_directory_uri() . '/images/btn_next.png" alt="next page" />'
+			: '<img src="' . get_template_directory_uri() . '/images/btn_next.png" alt="next page" />';
+
+		$big = 999999999; // need an unlikely integer
+
+		// https://codex.wordpress.org/Pagination
+		// https://codex.wordpress.org/Function_Reference/paginate_links
+		// https://www.wpexplorer.com/pagination-wordpress-theme/
+
+		$pages = paginate_links(
+			array(
+		        'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+		        'format'    => '?paged=%#%',
+		        'current'   => max(1, get_query_var('paged')),
+		        'total'     => $wp_query->max_num_pages,
+		        'type'      => 'array',
+				'prev_text'	=> $prev_arrow,
+				'next_text' => $next_arrow,
+	    	) 
+	    );
+
+	    if(is_array($pages))
+	    {
+        	$paged = (get_query_var('paged') == 0) ? 1 : get_query_var('paged');
+
+        	echo '<ul class="page-numbers">';
+
+	        foreach ($pages as $page)
+	        {
+	        	echo "<li>$page</li>";
+	        }
+
+			echo '</ul>';
+        }
+	}
+}

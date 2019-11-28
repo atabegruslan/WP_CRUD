@@ -276,3 +276,75 @@ div#header_1 div.menu-user-account-container {
     display: table;
     margin: 0 auto;
 }
+
+/* ------------------------------------------------------------------
+    Pagination
+-------------------------------------------------------------------*/
+div.pagination
+{
+    display: table;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 3px solid #000;
+}
+
+div.pagination ul.page-numbers
+{
+    list-style: none;
+    margin: 0;
+}
+
+div.pagination ul.page-numbers:after
+{
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+div.pagination ul.page-numbers li
+{
+    display: block;
+    float: left;
+    margin: 0 4px 4px 0;
+    text-align: center;
+}
+
+div.pagination ul.page-numbers a,
+div.pagination ul.page-numbers span
+{
+    line-height: 1.6em;
+    display: block;
+    padding: 0 6px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 400;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #888;
+}
+
+div.pagination ul.page-numbers a span
+{
+    padding: 0
+}
+
+div.pagination ul.page-numbers a:hover,
+div.pagination ul.page-numbers.current,
+div.pagination ul.page-numbers.current:hover
+{
+    color: #000;
+    background: #f7f7f7;
+    text-decoration: none;
+}
+
+div.pagination ul.page-numbers:hover
+{
+    text-decoration: none
+}

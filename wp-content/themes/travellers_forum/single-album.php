@@ -18,7 +18,7 @@
 		    <ul class="bxslider">
 				<?php foreach ($images as $image) : ?>
 
-			        <li><img src="<?php echo $image['url']; ?>" onclick="changeImg(this);" /></li>
+			        <li><img class="gallery_slide" src="<?php echo $image['url']; ?>" /></li>
 
 				<?php endforeach; ?>
 		    </ul>

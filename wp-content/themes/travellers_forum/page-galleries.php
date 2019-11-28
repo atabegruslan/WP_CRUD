@@ -1,14 +1,17 @@
 <?php get_header(); ?>
 
 <?php
-$args = array(
-	'post_type' => 'album'
-);
+    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+    $args  = array(
+    	'post_type'      => 'album',
+        'posts_per_page' => 3,
+        'paged'          => $paged
+    );
 
-$album = new WP_Query($args);
+    $wp_query = new WP_Query($args);
 ?>
 
-<?php  if ($album->have_posts()): while($album->have_posts()): $album->the_post(); ?>
+<?php  if ($wp_query->have_posts()): while($wp_query->have_posts()): $wp_query->the_post(); ?>
 
 	<?php
         if (get_the_post_thumbnail_url() === false)
@@ -23,7 +26,7 @@ $album = new WP_Query($args);
         $displayData = array(
             'link' => get_the_permalink(),
             'img_url' => $imgUrl,
-            'category' => get_the_terms($album->ID, 'gallery'),
+            'category' => get_the_terms($wp_query->ID, 'gallery'),
             'title' => get_the_title(),
             'varying_info' => array(
                 'author' => get_the_author(),
@@ -36,6 +39,12 @@ $album = new WP_Query($args);
 
 <?php endwhile; ?>
 <?php endif;?>
+
+<div class="row">
+    <div class="pagination">
+        <?php wpex_pagination() ;?>
+    </div>
+</div>
 
 <?php wp_reset_postdata(); ?>
 
