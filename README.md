@@ -404,8 +404,11 @@ add_action('wp_footer', 'add_style_js', 5);
 
 ## Upload to server
 
-- https://www.wpbeginner.com/wp-tutorials/how-to-move-wordpress-from-local-server-to-live-site/
-- Then check and update the home URL of the home menu item.
+- Option 1 & 2: https://www.wpbeginner.com/wp-tutorials/how-to-move-wordpress-from-local-server-to-live-site/
+ - Regarding step 7 of method 2 - SQL Replace: `UPDATE {wp_table_name} SET {column_name} = REPLACE(column_name, 'localhost/test/', 'www.yourlivesite.com/')`
+ - Then check and update the home URL of the home menu item.
+- Option 3: Akeeba plugin.
+- In case you need to add a new user via DB, here is how: https://wpengine.com/support/add-admin-user-phpmyadmin/
 
 ## Social Login
 

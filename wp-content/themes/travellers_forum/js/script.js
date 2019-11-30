@@ -12,7 +12,7 @@
             moveSlides: 3,
             slideWidth: 1000,
             slideMargin: 50,
-            touchEnabled: (navigator.maxTouchPoints > 0), // Mobile touch issue: https://github.com/stevenwanderski/bxslider-4/issues/1240 
+            touchEnabled: false, // Mobile touch issue: https://github.com/stevenwanderski/bxslider-4/issues/1240 
         });
 
         // Gallery
