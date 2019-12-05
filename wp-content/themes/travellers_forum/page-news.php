@@ -24,12 +24,12 @@
         }
 
         $displayData = array(
-            'link' => get_the_permalink(),
-            'img_url' => $imgUrl,
-            'category' => get_the_terms($wp_query->ID, 'category'),
-            'title' => get_the_title(),
+            'link'         => get_the_permalink(),
+            'img_url'      => $imgUrl,
+            'category'     => get_the_terms($wp_query->ID, 'category'),
+            'title'        => get_the_title(),
             'varying_info' => array(
-                'author' => get_the_author(),
+                'author'  => get_the_author(),
                 'created' => get_the_date()
             )
         );

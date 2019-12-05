@@ -148,6 +148,25 @@ $args = array(
 wp_nav_menu($args);
 ``` 
 
+##### Author archive link issue
+
+Ultimate Member plugin always wants to redirect the author archive link to author's user-profile page.
+
+So we have to comment out the below 3 lines in `wp-content/plugins/ultimate-member/includes/core/class-rewrite.php`
+
+```php
+/**
+ * Author page to user profile redirect
+ */
+function redirect_author_page() {
+	if ( UM()->options()->get( 'author_redirect' ) && is_author() ) {
+		// $id = get_query_var( 'author' );
+		// um_fetch_user( $id );
+		// exit( wp_redirect( um_user_profile_url() ) );
+	}
+}
+```
+
 ## WP Event Manager
 
 https://wordpress.org/plugins/wp-event-manager/
@@ -402,6 +421,16 @@ add_action('wp_footer', 'add_style_js', 5);
 - https://codex.wordpress.org/Function_Reference/paginate_links
 - https://www.wpexplorer.com/pagination-wordpress-theme/
 
+## Archives
+
+- Rewrite (eg author's) archive link's base: https://wpgeodirectory.com/support/topic/how-to-rename-author-link-for-author-archive-listing-page/#post-56652
+	- Or do it via plugin: https://wordpress.org/plugins/edit-author-slug/
+- Change (eg category's and tag's) archive links' base in the admin dasboard: https://www.wpbeginner.com/wp-tutorials/how-to-change-the-category-base-prefix-in-wordpress/
+- Redirect (eg author's) archive link: http://justintadlock.com/archives/2013/01/29/how-to-change-your-author-archive-link
+- More on rewrites:
+	- https://codex.wordpress.org/Rewrite_API/add_rewrite_rule
+	- https://wordpress.stackexchange.com/questions/229665/custom-rewrite-rules-for-archive-page-and-single-post
+
 ## Upload to server
 
 - Option 1 & 2: https://www.wpbeginner.com/wp-tutorials/how-to-move-wordpress-from-local-server-to-live-site/
@@ -413,3 +442,17 @@ add_action('wp_footer', 'add_style_js', 5);
 ## Social Login
 
 https://wpbuffs.com/integrate-facebook-login/
+
+
+## Tutorials
+
+- https://www.youtube.com/playlist?list=PLpcSpRrAaOaqMA4RdhSnnNcaqOVpX7qi5
+
+![wp-event-manager_setup](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/wp_system_files.png)
+
+---
+
+## To do
+
+- Archives, tags
+- Social Login

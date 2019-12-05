@@ -190,12 +190,12 @@ img.feature_img {
     display: block;
 }
 
-ul.post-categories {
+ul.post-categorie, ul.post-tagss {
     list-style-type: none;
     padding: 0;
 }
 
-ul.post-categories li {
+ul.post-categories li, ul.post-tags li {
     display: inline;
     border: 1px solid #ccc;
     padding: 5px;
@@ -203,7 +203,12 @@ ul.post-categories li {
 }
 
 ul.post-categories li a {
-    color: inherit;
+    color: black;
+    text-decoration: none;
+}
+
+ul.post-tags li a {
+    color: gray;
     text-decoration: none;
 }
 
@@ -228,7 +233,11 @@ div.news_bulletin {
     margin: 20px;
     border-style: outset;
 }
-div.news_bulletin div.news_excerpt, div.news_bulletin h3 {
+div.news_bulletin div.news_author, 
+div.news_bulletin div.news_categories, 
+div.news_bulletin div.news_created, 
+div.news_bulletin div.news_excerpt, 
+div.news_bulletin h3 {
     margin: 15px;
 }
 div.news_bulletin div.news_img {

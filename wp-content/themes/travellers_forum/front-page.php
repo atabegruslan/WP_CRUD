@@ -35,10 +35,7 @@
 									'img_url' => $imgUrl,
 									'category' => get_the_terms($destinations->ID, 'destination_category'),
 									'title' => get_the_title(),
-									'varying_info' => array(
-										'author' => get_the_author(),
-										'created' => get_the_date()
-									)
+									'tags' => get_the_tags(get_the_ID(), 'post_tag'),
 								);
 
 								echo render_layout('entry-item.slide', $displayData);
@@ -152,10 +149,6 @@
 									'img_url' => $imgUrl,
 									'category' => get_the_terms($gallery->ID, 'gallery'),
 									'title' => get_the_title(),
-									'varying_info' => array(
-										'author' => get_the_author(),
-										'created' => get_the_date()
-									)
 								);
 
 								echo render_layout('entry-item.slide', $displayData);

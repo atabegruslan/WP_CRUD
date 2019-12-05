@@ -185,11 +185,11 @@ if ( ! class_exists( 'um\core\Rewrite' ) ) {
 		 * Author page to user profile redirect
 		 */
 		function redirect_author_page() {
-			if ( UM()->options()->get( 'author_redirect' ) && is_author() ) {
-				$id = get_query_var( 'author' );
-				um_fetch_user( $id );
-				exit( wp_redirect( um_user_profile_url() ) );
-			}
+			// if ( UM()->options()->get( 'author_redirect' ) && is_author() ) {
+			// 	$id = get_query_var( 'author' );
+			// 	um_fetch_user( $id );
+			// 	exit( wp_redirect( um_user_profile_url() ) );
+			// }
 		}
 
 
