@@ -440,6 +440,12 @@ https://mekshq.com/passing-variables-via-get_template_part-wordpress/
 
 No need for `echo` in either case.
 
+## Comments
+
+1. https://www.wpbeginner.com/glossary/comment/
+2. https://developer.wordpress.org/reference/functions/comments_template/
+3. https://github.com/atabegruslan/Travellers_Forum/blob/master/wp-content/themes/travellers_forum/comments.php
+
 ## Upload to server
 
 - Option 1 & 2: https://www.wpbeginner.com/wp-tutorials/how-to-move-wordpress-from-local-server-to-live-site/
