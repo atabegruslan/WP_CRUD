@@ -446,6 +446,15 @@ No need for `echo` in either case.
 2. https://developer.wordpress.org/reference/functions/comments_template/
 3. https://github.com/atabegruslan/Travellers_Forum/blob/master/wp-content/themes/travellers_forum/comments.php
 
+## Breadcrumbs
+
+ - 2 Ways to Add Breadcrumbs: https://torquemag.io/2017/10/add-breadcrumbs-wordpress-website/
+	- Plugins: https://www.wpbeginner.com/plugins/how-to-display-breadcrumb-navigation-links-in-wordpress/
+		- PickPlugins Breadcrumb: https://wordpress.org/plugins/breadcrumb/
+		- NavXT: https://wordpress.org/plugins/breadcrumb-navxt/
+		- Yoast: https://wordpress.org/plugins/wordpress-seo/
+	- Code: https://www.isitwp.com/adding-breadcrumbs/
+
 ## Upload to server
 
 - Option 1 & 2: https://www.wpbeginner.com/wp-tutorials/how-to-move-wordpress-from-local-server-to-live-site/

@@ -38,3 +38,9 @@
             ?>
         </div>
     </div>
+
+    <div class="row" id="breadcrumbs">
+        <div class="col-md-12">
+            <?php echo do_shortcode("[breadcrumb]"); ?>
+        </div>
+    </div>
