@@ -38,7 +38,7 @@
 	            </ul>
 	        <?php endif; ?>
 
-			<?php if (isset($displayData['tags'])): ?>
+			<?php if (isset($displayData['tags']) && $displayData['tags'] !== false): ?>
 	            <ul class="post-tags">
 	                <?php foreach ($displayData['tags'] as $tag): ?>
 	                    <li>

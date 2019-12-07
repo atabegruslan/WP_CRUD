@@ -124,22 +124,32 @@ remove_filter( 'the_excerpt', 'wpautop' );
 //Add gallery size
 add_image_size('thumbnail-gallery','135','87',true);
 
-// hide top admin bar when admin login
-show_admin_bar( false );
+// hide top admin bar in the frontend if user isn't admin
+show_admin_bar( is_admin() );
 
 function cpt_post_search($query)
 {
+	$postTypes = ['post', 'event_listing', 'album', 'destination'];
+
 	if ($query->is_search)
 	{
 		$post_type = $_GET['post_type'];
 
 		if (empty($post_type))
 		{
-			$post_type = array( 'post', 'event_listing', 'album', 'destination' );
+			$post_type = $postTypes;
 		}
 
 		$query->set( 'post_type', $post_type );
 	}
+
+	if ( !is_admin() && $query->is_main_query() ) 
+	{
+		if ( is_tag() || $query->is_author() || is_month() || is_day() || $query->is_year() )
+		{
+			$query->set( 'post_type', $postTypes );
+		}
+    }
 
 	return $query;
 }
