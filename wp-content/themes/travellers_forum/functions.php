@@ -158,9 +158,8 @@ add_filter( 'pre_get_posts', 'cpt_post_search' );
 function render_layout($layout, $displayData = array())
 {
 	$layout = str_replace('.', '/', $layout);
-	$layout = __DIR__."/layouts/".$layout.".php";
 
-	include($layout);
+	include(locate_template('template-parts/' . $layout . '.php')); 
 }
 
 function customWidgetInit()

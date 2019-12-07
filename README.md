@@ -431,6 +431,15 @@ add_action('wp_footer', 'add_style_js', 5);
 	- https://codex.wordpress.org/Rewrite_API/add_rewrite_rule
 	- https://wordpress.stackexchange.com/questions/229665/custom-rewrite-rules-for-archive-page-and-single-post
 
+## Template parts
+
+https://mekshq.com/passing-variables-via-get_template_part-wordpress/
+
+- If you need to pass data to template, use `include(locate_template('template-parts/xx/yy.php'))`
+- If you don't need to pass data to template, use `get_template_part('template-parts/xx/yy')`
+
+No need for `echo` in either case.
+
 ## Upload to server
 
 - Option 1 & 2: https://www.wpbeginner.com/wp-tutorials/how-to-move-wordpress-from-local-server-to-live-site/
