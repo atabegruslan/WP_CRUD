@@ -3,8 +3,6 @@
 <div class="row">
 	<div class="col-md-12">
 
-		<h1><?php echo get_the_archive_title(); ?></h1>
-
 		<?php if (is_tag()): ?>
 
 			<h2>Tag Archive: <?php echo single_tag_title(); ?></h2>
@@ -54,7 +52,11 @@
 
 		<?php else: ?>
 
-			<h2><?php single_cat_title(); ?></h2>
+			<?php if (is_tax()): ?>
+				<h2><?php single_cat_title(); ?></h2>
+			<?php else: ?>
+				<h2><?php echo get_the_archive_title(); ?></h2>
+			<?php endif; ?>
 
 			<?php 
 				$obj = get_queried_object();

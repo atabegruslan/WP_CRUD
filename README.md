@@ -1,6 +1,6 @@
 ## Site
 
-http://ruslan-website.com/wp/travellers_forum/
+http://ruslan-website.com/wp5/travellers_forum/
 
 ## Start with a minimal theme
 
@@ -465,7 +465,8 @@ No need for `echo` in either case.
 
 ## Social Login
 
-https://wpbuffs.com/integrate-facebook-login/
+- https://wpbuffs.com/integrate-facebook-login/
+- https://wp-native-articles.com/blog/news/how-to-fix-facebook-apps-error-cant-load-url-domain-url-isnt-included-apps-domains/
 
 
 ## Tutorials
