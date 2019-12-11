@@ -467,6 +467,7 @@ No need for `echo` in either case.
 
 - https://wpbuffs.com/integrate-facebook-login/
 - https://wp-native-articles.com/blog/news/how-to-fix-facebook-apps-error-cant-load-url-domain-url-isnt-included-apps-domains/
+- https://developers.google.com/identity/sign-in/web/sign-in
 
 
 ## Tutorials
@@ -474,9 +475,3 @@ No need for `echo` in either case.
 - https://www.youtube.com/playlist?list=PLpcSpRrAaOaqMA4RdhSnnNcaqOVpX7qi5
 
 ![wp-event-manager_setup](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/wp_system_files.png)
-
----
-
-## To do
-
-- Social Login
