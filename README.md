@@ -481,3 +481,10 @@ No need for `echo` in either case.
 	- https://www.youtube.com/playlist?list=PLJetLDY7yKuqoLwINbyf-lQeVsc49G3o_
 
 ![wp-event-manager_setup](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/wp_system_files.png)
+
+---
+
+# Todo
+
+- Bug: events part
+- froalaEditor problem

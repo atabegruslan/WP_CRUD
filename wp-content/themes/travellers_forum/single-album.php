@@ -15,7 +15,7 @@
 
 			<?php $images = get_field('gallery'); ?>
 
-		    <ul class="bxslider">
+		    <ul class="bxSlider gallery">
 				<?php foreach ($images as $image) : ?>
 
 			        <li><img class="gallery_slide" src="<?php echo $image['url']; ?>" /></li>

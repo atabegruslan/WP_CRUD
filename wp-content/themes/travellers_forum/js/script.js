@@ -2,8 +2,11 @@
 
     $(document).ready(function(){
 
-        // Carousel 
-        $('.bxSlider').bxSlider({
+        // Note: Do NOT address the following 3 sliders as one by referring to them all as $('.bxSlider')
+        // otherwise they will all take a long time to load
+        // Address them seperately as below
+        //$('#destination_sliders').hide();
+        $('.bxSlider.destination').bxSlider({
             //mode: 'fade',
             captions: true,
             pager: false,
@@ -13,6 +16,49 @@
             slideWidth: 1000,
             slideMargin: 50,
             touchEnabled: false, // Mobile touch issue: https://github.com/stevenwanderski/bxslider-4/issues/1240 
+            responsive: true,
+            //imageWait : true,//wait while all images finished loading
+            //preloadImages: 'all',//hide the slides until the page loads
+            // https://stackoverflow.com/questions/23193973/bxslider-show-images-as-they-load
+            // onSliderLoad: function() { // https://stackoverflow.com/questions/11658605/how-to-get-bxslider-to-hide-the-slides-until-the-page-loads
+            //     $('#destination_sliders').show();
+            // },
+        });
+        //$('#event_sliders').hide();
+        $('.bxSlider.event').bxSlider({
+            //mode: 'fade',
+            captions: true,
+            pager: false,
+            minSlides: 3,
+            maxSlides: 3,
+            moveSlides: 3,
+            slideWidth: 1000,
+            slideMargin: 50,
+            touchEnabled: false,
+            responsive: true,
+            //imageWait : true,
+            //preloadImages: 'all',
+            // onSliderLoad: function() {
+            //     $('#event_sliders').show();
+            // },
+        });
+        //$('#gallery_sliders').hide();
+        $('.bxSlider.gallery').bxSlider({
+            //mode: 'fade',
+            captions: true,
+            pager: false,
+            minSlides: 3,
+            maxSlides: 3,
+            moveSlides: 3,
+            slideWidth: 1000,
+            slideMargin: 50,
+            touchEnabled: false,
+            responsive: true,
+            //imageWait : true,
+            //preloadImages: 'all',
+            // onSliderLoad: function() {
+            //     $('#gallery_sliders').show();
+            // },
         });
 
         // Gallery

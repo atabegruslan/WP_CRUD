@@ -23,7 +23,7 @@ node_modules/
 *.sqlite
 
 # ignore akeeba backup files
-#*.jpa
+*.jpa
 
 # others
 .DS_Store
