@@ -498,6 +498,7 @@ For comparison:
 
 - Joomla Triggers
 	- https://docs.joomla.org/J3.x:Triggering_content_plugins_in_your_extension
+	- https://docs.joomla.org/J3.x:Creating_a_Plugin_for_Joomla
 
 ---
 
