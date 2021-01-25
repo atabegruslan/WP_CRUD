@@ -476,11 +476,28 @@ No need for `echo` in either case.
 	- https://www.youtube.com/playlist?list=PLpcSpRrAaOaqMA4RdhSnnNcaqOVpX7qi5
 	- https://www.youtube.com/playlist?list=PLriKzYyLb28nUFbe0Y9d-19uVkOnhYxFE
 	- https://www.youtube.com/playlist?list=PLriKzYyLb28kpEnFFi9_vJWPf5-_7d3rX
+	
+![](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/wp_system_files.png)
+
 - Plugin
 	- https://www.youtube.com/playlist?list=PLriKzYyLb28kR_CPMz8uierDWC2y3znI2
 	- https://www.youtube.com/playlist?list=PLJetLDY7yKuqoLwINbyf-lQeVsc49G3o_
+	
+![](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/WP_actions_and_filters.png)
 
-![wp-event-manager_setup](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/wp_system_files.png)
+System Hooks:
+
+- https://developer.wordpress.org/reference/hooks/
+- https://adambrown.info/p/wp_hooks
+
+For comparison:
+
+- Plain PHP
+	- https://stackoverflow.com/questions/8336308/how-to-do-a-php-hook-system
+	- https://www.php.net/manual/en/function.uopz-set-hook.php
+
+- Joomla Triggers
+	- https://docs.joomla.org/J3.x:Triggering_content_plugins_in_your_extension
 
 ---
 
