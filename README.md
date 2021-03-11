@@ -472,25 +472,25 @@ No need for `echo` in either case.
 
 ## Tutorials
 
-- Theme
+### Theme
 	- https://www.youtube.com/playlist?list=PLpcSpRrAaOaqMA4RdhSnnNcaqOVpX7qi5
 	- https://www.youtube.com/playlist?list=PLriKzYyLb28nUFbe0Y9d-19uVkOnhYxFE
 	- https://www.youtube.com/playlist?list=PLriKzYyLb28kpEnFFi9_vJWPf5-_7d3rX
 	
 ![](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/wp_system_files.png)
 
-- Plugin
+### Hooks
 	- https://www.youtube.com/playlist?list=PLriKzYyLb28kR_CPMz8uierDWC2y3znI2
 	- https://www.youtube.com/playlist?list=PLJetLDY7yKuqoLwINbyf-lQeVsc49G3o_
 	
 ![](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/WP_actions_and_filters.png)
 
-System Hooks:
+#### System Hooks:
 
 - https://developer.wordpress.org/reference/hooks/
 - https://adambrown.info/p/wp_hooks
 
-For comparison:
+#### For comparison:
 
 - Plain PHP
 	- https://stackoverflow.com/questions/8336308/how-to-do-a-php-hook-system
@@ -499,6 +499,100 @@ For comparison:
 - Joomla Triggers
 	- https://docs.joomla.org/J3.x:Triggering_content_plugins_in_your_extension
 	- https://docs.joomla.org/J3.x:Creating_a_Plugin_for_Joomla
+
+### Enqueuing styles and scripts
+
+#### Admin
+	- https://blog.wplauncher.com/add-scripts-styles-to-specific-wordpress-admin-pages/
+	- https://developer.wordpress.org/reference/hooks/admin_enqueue_scripts
+
+#### Enqueue and localize 
+
+In other words, put PHP variables into JS.
+
+**For example:** 
+
+Use WordPress localization function to add string called 'Thank you' into `global.js` file. 
+
+Enqueue `global.js` file using WP functions.
+
+Write small script that will change button text to 'Thank you' after clicking.
+
+**Below is how you do that:** 
+
+functions.php
+```php
+function my_register_scripts()
+{
+	// The path doesn't have to be the parent theme's. 
+	// It can be the child theme's (get_stylesheet_directory_uri) 
+	// or a plugin's path.
+	wp_register_script( 'thank_you_script', get_template_directory_uri() . '/js/global.js', ["jquery"], 1.0, true );
+}
+add_action('init', 'my_register_scripts');
+
+function my_enqueue_scripts()
+{
+	$message = 'Thank you';
+	wp_localize_script( 'thank_you_script', 'thank_you_obj', ['message' => $message] );
+	wp_enqueue_script( 'thank_you_script' );
+}
+add_action( 'wp_enqueue_scripts', 'my_enqueue_scripts' );
+```
+
+global.js
+```js
+(function($) {
+    $(document).ready(function(){
+	
+        $("button").click(function(e){
+			$(e.target).html(thank_you_obj.message);
+		}); 
+		
+    });
+})(jQuery);
+```
+
+### Querying
+
+https://www.billerickson.net/code/wp_query-arguments/
+
+**Example 1:** Write WP query that will pull all custom post types called 'porftolio' that have special meta key called type and filter them
+by meta value movie:
+
+```php
+$porftolioMovies = new WP_Query(
+	[
+		'post_type'  => 'porftolio',
+		'meta_query' => [
+			[
+				'key'   => 'type',
+				'value' => 'movie',
+			]
+		],
+	]
+);
+```
+
+**Example 2:** What is the $wpdb variable in WordPress, and how can you use it to improve the following code?
+
+```php
+function perform_database_action(){
+    mysql_query(“INSERT into table_name (col1, col2, col3) VALUES ('$value1','$value2', '$value3');
+}
+```
+
+$wpdb: interacting with database without using raw SQL code
+
+```php
+global $wpdb;
+
+$wpdb->insert('table_name', [
+    'col1' => $value1,
+    'col2' => $value2,
+    'col3' => $value3,
+]);
+```
 
 ---
 
