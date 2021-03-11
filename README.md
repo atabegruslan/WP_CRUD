@@ -502,9 +502,14 @@ No need for `echo` in either case.
 
 ### Enqueuing styles and scripts
 
+#### Theme directory and child theme directory
+
+- https://stackoverflow.com/questions/31797203/whats-the-difference-between-get-stylesheet-directory-uri-and-get-template-di
+
 #### Admin
-	- https://blog.wplauncher.com/add-scripts-styles-to-specific-wordpress-admin-pages/
-	- https://developer.wordpress.org/reference/hooks/admin_enqueue_scripts
+
+- https://blog.wplauncher.com/add-scripts-styles-to-specific-wordpress-admin-pages/
+- https://developer.wordpress.org/reference/hooks/admin_enqueue_scripts
 
 #### Enqueue and localize 
 
@@ -555,7 +560,8 @@ global.js
 
 ### Querying
 
-https://www.billerickson.net/code/wp_query-arguments/
+- https://www.billerickson.net/code/wp_query-arguments/
+- https://wordpress.stackexchange.com/questions/48516/filtering-posts-by-post-meta-data
 
 **Example 1:** Write WP query that will pull all custom post types called 'porftolio' that have special meta key called type and filter them
 by meta value movie:
