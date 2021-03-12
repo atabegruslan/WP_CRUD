@@ -500,6 +500,48 @@ No need for `echo` in either case.
 	- https://docs.joomla.org/J3.x:Triggering_content_plugins_in_your_extension
 	- https://docs.joomla.org/J3.x:Creating_a_Plugin_for_Joomla
 
+### Making dependent plugins
+
+Take a `dependent/dependent.php` plugin file for example:
+
+```php
+
+/*
+Plugin Name: Dependent
+Description: Dependent
+Version:     1.0
+Author:      Ruslan Aliyev
+*/
+
+function prerequisite_met() 
+{ // https://wordpress.stackexchange.com/questions/189208/check-for-dependent-plugin-and-if-false-dont-activate-plugin
+    require_once( ABSPATH . '/wp-admin/includes/plugin.php' ) ;  // to get is_plugin_active() early
+    $dependency = 'woocommerce/woocommerce.php';
+
+    if(!file_exists(WP_PLUGIN_DIR . '/' . $dependency))
+    {
+        return show_error();
+    }   
+
+    if (!is_plugin_active($dependency)) 
+    {
+        return show_error();
+    }
+
+    return true ;
+}
+
+function show_error()
+{
+    echo '<h3>'.__('Please update all woocommerce extensions before activating.', 'wc').'</h3>';
+    @trigger_error(__('Please update all woocommerce extensions before activating.', 'wc'), E_USER_ERROR);
+
+    return false;
+}
+
+register_activation_hook(   __FILE__, 'prerequisite_met' );
+```
+
 ### Enqueuing styles and scripts
 
 #### Theme directory and child theme directory
