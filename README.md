@@ -652,6 +652,11 @@ WP Cron works on a per request basis. It does not rely on server's Cron. It can 
 
 https://chrislema.com/understanding-wp-cron/
 
+## Making API routes
+
+- https://www.sitepoint.com/wordpress-rest-api-adding-custom-routes/
+- https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
+
 ---
 
 # Todo
