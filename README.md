@@ -646,6 +646,12 @@ $wpdb->insert('table_name', [
 ]);
 ```
 
+## WP Cron
+
+WP Cron works on a per request basis. It does not rely on server's Cron. It can be problematic for less popular sites.
+
+https://chrislema.com/understanding-wp-cron/
+
 ---
 
 # Todo
