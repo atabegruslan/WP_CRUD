@@ -18,26 +18,7 @@ We will need those later.
 
 ## Ready SMTP Server
 
-https://www.arclab.com/en/kb/email/how-to-enable-imap-pop3-smtp-gmail-account.html
-
-### Enable IMAP and/or POP3
-
-1. Go to the "Settings", e.g. click on the "Gears" icon and select "Settings".
-2. Click on "Forwarding and POP/IMAP".
-3. Enable "IMAP Access" and/or "POP Download"
-
-Enable Third-Party Mail Clients
-
-- See: https://support.google.com/accounts/answer/6010255?hl=en for details.
-The page contains a link to enable "Less secure apps" in MyAccount.
-- You can also enable "Less secure apps" (third-party mail clients) from:
-"MyAccount" > "Sign-in & security" > "Connected apps & sites" > "Allow less secure apps"
-
-### Gmail SMTP Server
-
-- Server: smtp.gmail.com
-- Encryption/Authentication: StartTLS
-- Port: 587
+https://github.com/Ruslan-Aliyev/mail/tree/master#ready-smtp-server
 
 ## Ready WP Mail SMTP Plugin
 
