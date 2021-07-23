@@ -638,6 +638,24 @@ https://chrislema.com/understanding-wp-cron/
 - https://www.sitepoint.com/wordpress-rest-api-adding-custom-routes/
 - https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
 
+## Multisite
+
+- https://www.youtube.com/watch?v=NR_zJjl-7cc
+- https://pressable.com/2020/01/21/what-is-wordpress-multisite-and-when-should-you-use-it/
+- https://wordpress.org/support/article/create-a-network/
+
+## Tracing hooks
+
+- https://developer.wordpress.org/reference/functions/_wp_call_all_hook/
+- https://pantheon.io/blog/tracing-wordpress-actions-and-filters
+- https://wordpress.stackexchange.com/questions/162862/how-to-get-wordpress-hooks-actions-run-sequence
+- https://wordpress.stackexchange.com/questions/105039/get-a-list-of-all-registered-actions
+- https://wordpress.stackexchange.com/questions/35076/how-can-i-see-all-the-actions-attached-to-an-add-action-hook
+- https://wordpress.stackexchange.com/questions/135857/how-to-list-the-hooks-and-order-of-execution-in-current-loading-page
+- https://www.rarst.net/wordpress/debug-wordpress-hooks/
+- https://wordpress.stackexchange.com/questions/250317/how-wordpress-understands-what-do-with-the-all-key-in-the-wp-filter-array
+- https://www.smashingmagazine.com/2012/02/inside-wordpress-actions-filters/
+
 ---
 
 # Todo
