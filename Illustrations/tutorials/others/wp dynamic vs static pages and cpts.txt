@@ -1,0 +1,15 @@
+page- for page
+1. new page in wp admin, eg named 'something'
+2. in wp-content\themes\{theme} create page-something.php
+
+so page.php is dynamic, page-something.php is static
+
+archive- for custom type post list (load all)
+1. in CPT UI section of wp admin, new post type, name it eg 'something' has archive = true
+2. in wp-content\themes\{theme} create archive-something.php
+
+single- for custom type post detail (load one)
+1. in wp admin, under 'something' section, create new post called eg 'whatever'
+2. in wp-content\themes\{theme} create single-whatever.php
+
+so single.php is dynamic, single-whatever.php is static

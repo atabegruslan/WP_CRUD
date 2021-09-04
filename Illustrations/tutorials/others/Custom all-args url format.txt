@@ -1,0 +1,1 @@
+/index.php/%year%/%monthnum%/%day%/%postname%/
