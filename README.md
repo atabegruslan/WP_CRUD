@@ -633,6 +633,18 @@ WP Cron works on a per request basis. It does not rely on server's Cron. It can 
 
 https://chrislema.com/understanding-wp-cron/
 
+### Scheduling Cron
+
+- https://spacema-studio.com/how-to-start/how-do-i-manually-run-a-cron-job-in-wordpress.html
+- https://www.smashingmagazine.com/2013/10/schedule-events-using-wordpress-cron/
+- https://wpengine.com/support/wp-cron-wordpress-scheduling/
+- https://wpshout.com/wp_schedule_event-examples/
+
+### Troubleshoot Cron
+
+- https://wp-mix.com/wordpress-cron-not-working/
+- https://wordpress.stackexchange.com/a/193860
+
 ## Making API routes
 
 - https://www.sitepoint.com/wordpress-rest-api-adding-custom-routes/
