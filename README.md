@@ -644,6 +644,7 @@ https://chrislema.com/understanding-wp-cron/
 
 - https://wp-mix.com/wordpress-cron-not-working/
 - https://wordpress.stackexchange.com/a/193860
+- https://wordpress.stackexchange.com/a/100038
 
 ## Making API routes
 
