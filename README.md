@@ -635,13 +635,54 @@ https://chrislema.com/understanding-wp-cron/
 
 ### Scheduling Cron
 
-- https://spacema-studio.com/how-to-start/how-do-i-manually-run-a-cron-job-in-wordpress.html
+```php
+register_activation_hook( __FILE__, 'create_daily_backup_schedule' );
+
+function create_daily_backup_schedule()
+{
+  // Use wp_next_scheduled to check if the event is already scheduled
+  $timestamp = wp_next_scheduled( 'create_daily_backup' );
+
+  // If $timestamp == false schedule daily backups since it hasn't been done previously
+  if( $timestamp == false )
+  {
+    // Schedule the event for right now, then to repeat daily using the hook 'create_daily_backup'
+    wp_schedule_event( time(), 'daily', 'create_daily_backup' );
+  }
+}
+
+// Hook our function , create_backup(), into the action create_daily_backup
+add_action( 'create_daily_backup', 'create_backup' );
+function create_backup()
+{
+  // Run code to create backup.
+}
+
+register_deactivation_hook(__FILE__, 'delete_daily_backup_schedule');
+public static function delete_daily_backup_schedule()
+{
+  wp_clear_scheduled_hook('create_daily_backup_schedule');
+}
+
+add_filter('cron_schedules', 'add_cron_interval');
+public function add_cron_interval( $schedules ) 
+{
+  $schedules['everyminute'] = array(
+    'interval'  => 60, // time in seconds
+    'display'   => 'Every Minute'
+  );
+
+  return $schedules;
+}
+```
+
 - https://www.smashingmagazine.com/2013/10/schedule-events-using-wordpress-cron/
 - https://wpengine.com/support/wp-cron-wordpress-scheduling/
 - https://wpshout.com/wp_schedule_event-examples/
 
 ### Troubleshoot Cron
 
+- https://spacema-studio.com/how-to-start/how-do-i-manually-run-a-cron-job-in-wordpress.html
 - https://wp-mix.com/wordpress-cron-not-working/
 - https://wordpress.stackexchange.com/a/193860
 - https://wordpress.stackexchange.com/a/100038
