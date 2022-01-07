@@ -691,14 +691,14 @@ public function add_cron_interval( $schedules )
 
 ### Plain WP
 
-wp-content
-- plugins
- - myplugin
-  - myplugin.php
-  - languages
-   - myplugin-en_US.mo
-   - myplugin-en_US.po
-   - myplugin.pot
+- wp-content
+	- plugins
+		- myplugin
+			- myplugin.php
+			- languages
+				- myplugin-en_US.mo
+				- myplugin-en_US.po
+				- myplugin.pot
 
 Language labels (eg: `en_US`) can be set in `wp-config.php`'s `WPLANG`. https://wordpress.org/support/article/editing-wp-config-php/
 
