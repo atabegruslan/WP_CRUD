@@ -687,6 +687,60 @@ public function add_cron_interval( $schedules )
 - https://wordpress.stackexchange.com/a/193860
 - https://wordpress.stackexchange.com/a/100038
 
+## Multi-lingual
+
+### Plain WP
+
+wp-content
+- plugins
+ - myplugin
+  - myplugin.php
+  - languages
+   - myplugin-en_US.mo
+   - myplugin-en_US.po
+   - myplugin.pot
+
+Language labels (eg: `en_US`) can be set in `wp-config.php`'s `WPLANG`. https://wordpress.org/support/article/editing-wp-config-php/
+
+myplugin.pot
+```
+# Myplugin
+msgid ""
+msgstr ""
+"Project-Id-Version: Myplugin\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: John Doe <EMAIL@ADDRESS>\n"
+"Language-Team: en_US <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2018-04-23 21:34+0000\n"
+"PO-Revision-Date: 2021-12-20 21:34+0000\n"
+"X-Generator: Loco https://localise.biz/"
+
+msgid "msgstr_1"
+msgstr "Bla bla bla"
+
+msgid "msgstr_2"
+msgstr "Bla bla is %1$s"
+```
+
+Open `.pot` file in POEdit. Do your translations in POEdit. Save. `.mo` and `.po` will automatically be created/saved.
+
+myplugin.php
+```php
+load_plugin_textdomain('myplugin', false, dirname( plugin_basename(__FILE__) ) . '/languages/');
+_e('msgstr_1', 'myplugin');
+echo sprintf(__('msgstr_2', 'myplugin'), 'param-value');
+```
+
+- https://carlalexander.ca/placeholders-wordpress-translations/
+- https://www.flippercode.com/make-a-wordpress-plugin-multilingual/
+
+### In WooCommerce
+
+- https://github.com/atabegruslan/WP_WooCommerce#language
+
 ## Making API routes
 
 - https://www.sitepoint.com/wordpress-rest-api-adding-custom-routes/
