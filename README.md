@@ -627,6 +627,183 @@ $wpdb->insert('table_name', [
 ]);
 ```
 
+## Plugin development related things
+
+### Plugin's settings link
+
+![](/Illustrations/plugin_settings.PNG)
+
+myplugin.php
+```php
+$plugin = plugin_basename(__FILE__); 
+
+function myplugin_settings_link($links) 
+{ 
+    $url = esc_url( add_query_arg(
+        'page',
+        'myplugin',
+        get_admin_url() . 'admin.php'
+    ) );
+
+    $settings_link = "<a href='$url'>" . __( 'Settings' ) . '</a>';
+
+    array_push(
+        $links,
+        $settings_link
+    );
+    return $links;
+}
+add_filter("plugin_action_links_$plugin", 'myplugin_settings_link' );
+```
+
+- https://w3bits.com/plugin-settings-link/
+
+### Plugin's tables
+
+```php
+register_activation_hook( __FILE__, "setup_db" );
+public function setup_db()
+{
+	global $wpdb;
+
+	$table_name      = $wpdb->prefix . 'myplugin_tablename';
+	$charset_collate = $wpdb->get_charset_collate();
+
+	if( $wpdb->get_var( "show tables like '$table_name'" ) != $table_name ) 
+	{
+	    $sql = "CREATE TABLE `$table_name` (";
+	    $sql .= " `id` bigint(20) NOT NULL auto_increment, ";
+	    $sql .= " `col1` bigint(20) NOT NULL, ";
+	    $sql .= " `col2` varchar(500) NOT NULL, ";
+	    $sql .= " PRIMARY KEY `remote_mapping_id` (`id`), ";
+	    $sql .= " INDEX (`col1`) ";
+	    $sql .= ") $charset_collate;";
+	}
+
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	dbDelta($sql);
+}
+```
+
+- https://wordpress.tutorials24x7.com/blog/create-db-table-on-activating-wordpress-plugin
+- https://roytuts.com/how-to-create-table-with-wordpress-plugin/
+
+### Multiple pages
+
+- wp-content
+	- plugins
+		- myplugin
+			- myplugin.php
+			- mainpage.php
+			- page1.php
+			- page2.php
+
+This is the general idea: in `myplugin.php`, `include_once('page1.php');`
+
+myplugin.php
+```php
+add_action('admin_menu', 'register_menu');
+public function register_menu()
+{
+	add_menu_page( // Main page
+		'The Title',
+		'Left hand side menu title',
+		'manage_options', // any needed permissions
+		'the-plugin-name', 
+		'register_main_page', // callback function
+		'logo.png'
+	);
+
+	add_submenu_page(  // Other page(s)
+		null, 
+		'The Title', 
+		'The Title', 
+		'manage_options', // any needed permissions
+		'url-slug', // Can be visited at {domain}/wp-admin/admin.php?page=url-slug
+		'register_other_page' // callback function
+	);
+}
+public function register_main_page()
+{
+	include_once('mainpage.php');
+}
+public function register_other_page()
+{
+	include_once('mainpage.php');
+}
+public function register_other_page() 
+{
+	if(!(basename($_SERVER['PHP_SELF']) === "admin.php" && $_GET['page'] === "url-slug" && current_user_can('manage_options'))) 
+	{
+		return;
+	}
+
+	$post_id = isset($_REQUEST['id']) ? intval($_REQUEST['id']) : ''; // Post ID can be passed into page1.php as a param
+
+	if(empty($post_id)) 
+	{
+		return;
+	}
+
+	require_once(dirname(__FILE__) . "/page1.php");
+	exit;
+}
+```
+
+### Tabs inside pages
+
+![](/Illustrations/wp_plugin_tabs.PNG)
+
+Utilize WP's inbuild classes
+
+```html
+<?php
+	$default_tab = null;
+	$tab = isset($_GET['tab']) ? $_GET['tab'] : $default_tab;
+?>
+<div class="wrap">
+	<h2>
+		<!-- Keep this dummy H2 here, else the admin warnings will display elsewhere -->
+		<!-- https://wordpress.stackexchange.com/a/220735 -->
+	</h2>
+	
+	<?php settings_errors(); ?>
+
+	<nav class="nav-tab-wrapper">
+		<a 
+			href="?page=myplugin" 
+			class="nav-tab <?php if($tab===null):?>nav-tab-active<?php endif; ?>"
+		>
+			Main tab title
+		</a>
+		<a 
+			href="?page=myplugin&tab=tab1" 
+			class="nav-tab <?php if($tab==='tab1'):?>nav-tab-active<?php endif; ?>"
+		>
+			Tab 1 title
+		</a>
+	</nav>
+
+	<div class="tab-content">
+		<?php 
+			switch($tab) 
+			{
+				case 'tab1':
+					include_once('tab1.php');
+					break;
+				default:
+					include_once('tab0.php');
+					break;
+			}
+		?>
+	</div>
+</div>
+```
+
+- https://wordpress.stackexchange.com/questions/195661/create-tabs-inside-plugins-admin-page
+- https://www.slideshare.net/italianst4/your-custom-wordpress-admin-pages-suck/26-Tabs_div_classwrap_h2_classnavtabwrapper
+- https://nimblewebdeveloper.com/blog/add-tabs-to-wordpress-plugin-admin-page
+
 ## WP Cron
 
 WP Cron works on a per request basis. It does not rely on server's Cron. It can be problematic for less popular sites.
