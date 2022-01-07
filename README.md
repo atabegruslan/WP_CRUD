@@ -750,6 +750,12 @@ public function register_other_page()
 }
 ```
 
+### Admin LHS plugin menu and submenu items
+
+![](/Illustrations/plugin_menus.PNG)
+
+https://wordpress.stackexchange.com/a/173393
+
 ### Tabs inside pages
 
 ![](/Illustrations/wp_plugin_tabs.PNG)
