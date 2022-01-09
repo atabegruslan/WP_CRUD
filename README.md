@@ -397,6 +397,11 @@ add_action('wp_footer', 'add_style_js', 5);
 ?>
 ```
 
+### Making Custom Fields and Metaboxes Manually
+
+- https://www.hostinger.com/tutorials/wordpress-custom-fields
+- https://metabox.io/how-to-create-custom-meta-boxes-custom-fields-in-wordpress/
+
 ## Pagination
 - https://codex.wordpress.org/Pagination
 - https://codex.wordpress.org/Function_Reference/paginate_links
