@@ -759,10 +759,6 @@ public function register_main_page()
 {
 	include_once('mainpage.php');
 }
-public function register_other_page()
-{
-	include_once('mainpage.php');
-}
 public function register_other_page() 
 {
 	if(!(basename($_SERVER['PHP_SELF']) === "admin.php" && $_GET['page'] === "url-slug" && current_user_can('manage_options'))) 
