@@ -401,6 +401,7 @@ add_action('wp_footer', 'add_style_js', 5);
 
 - https://www.hostinger.com/tutorials/wordpress-custom-fields
 - https://metabox.io/how-to-create-custom-meta-boxes-custom-fields-in-wordpress/
+- https://metabox.io/create-wordpress-custom-post-types/
 
 ## Pagination
 - https://codex.wordpress.org/Pagination
