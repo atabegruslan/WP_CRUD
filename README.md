@@ -451,27 +451,45 @@ No need for `echo` in either case.
 - https://developers.google.com/identity/sign-in/web/sign-in
 
 
-## Tutorials
+# Tutorials
+
+## General
 
 ### Theme
 	- https://www.youtube.com/playlist?list=PLpcSpRrAaOaqMA4RdhSnnNcaqOVpX7qi5
 	- https://www.youtube.com/playlist?list=PLriKzYyLb28nUFbe0Y9d-19uVkOnhYxFE
 	- https://www.youtube.com/playlist?list=PLriKzYyLb28kpEnFFi9_vJWPf5-_7d3rX
 	
-![](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/wp_system_files.png)
+![](/Illustrations/wp_system_files.png)
 
-### Hooks
+### Dashicons
+
+https://developer.wordpress.org/resource/dashicons/
+
+### Export & Import media
+
+https://help.rockcontent.com/how-to-export-and-import-posts-from-one-wordpress-to-another
+
+### Rename attachments (via Plugin)
+
+https://www.wpbeginner.com/plugins/how-to-rename-images-and-media-files-in-wordpress/
+
+### Reinstall
+
+https://kinsta.com/blog/reinstall-wordpress/
+
+## Hooks
 	- https://www.youtube.com/playlist?list=PLriKzYyLb28kR_CPMz8uierDWC2y3znI2
 	- https://www.youtube.com/playlist?list=PLJetLDY7yKuqoLwINbyf-lQeVsc49G3o_
 	
-![](https://raw.githubusercontent.com/atabegruslan/Travellers_Forum/master/Illustrations/WP_actions_and_filters.png)
+![](/Illustrations/WP_actions_and_filters.png)
 
-#### System Hooks:
+### System Hooks:
 
 - https://developer.wordpress.org/reference/hooks/
 - https://adambrown.info/p/wp_hooks
 
-#### For comparison:
+### For comparison:
 
 - Plain PHP
 	- https://stackoverflow.com/questions/8336308/how-to-do-a-php-hook-system
@@ -481,64 +499,34 @@ No need for `echo` in either case.
 	- https://docs.joomla.org/J3.x:Triggering_content_plugins_in_your_extension
 	- https://docs.joomla.org/J3.x:Creating_a_Plugin_for_Joomla
 
-### Making dependent plugins
+### Tracing hooks
 
-Take a `dependent/dependent.php` plugin file for example:
+- https://developer.wordpress.org/reference/functions/_wp_call_all_hook/
+- https://pantheon.io/blog/tracing-wordpress-actions-and-filters
+- https://wordpress.stackexchange.com/questions/162862/how-to-get-wordpress-hooks-actions-run-sequence
+- https://wordpress.stackexchange.com/questions/105039/get-a-list-of-all-registered-actions
+- https://wordpress.stackexchange.com/questions/35076/how-can-i-see-all-the-actions-attached-to-an-add-action-hook
+- https://wordpress.stackexchange.com/questions/135857/how-to-list-the-hooks-and-order-of-execution-in-current-loading-page
+- https://www.rarst.net/wordpress/debug-wordpress-hooks/
+- https://wordpress.stackexchange.com/questions/250317/how-wordpress-understands-what-do-with-the-all-key-in-the-wp-filter-array
+- https://www.smashingmagazine.com/2012/02/inside-wordpress-actions-filters/
 
-```php
+## Enqueuing styles and scripts
 
-/*
-Plugin Name: Dependent
-Description: Dependent
-Version:     1.0
-Author:      Ruslan Aliyev
-*/
-
-function prerequisite_met() 
-{ // https://wordpress.stackexchange.com/questions/189208/check-for-dependent-plugin-and-if-false-dont-activate-plugin
-    require_once( ABSPATH . '/wp-admin/includes/plugin.php' ) ;  // to get is_plugin_active() early
-    $dependency = 'woocommerce/woocommerce.php';
-
-    if(!file_exists(WP_PLUGIN_DIR . '/' . $dependency))
-    {
-        return show_error();
-    }   
-
-    if (!is_plugin_active($dependency)) 
-    {
-        return show_error();
-    }
-
-    return true ;
-}
-
-function show_error()
-{
-    echo '<h3>'.__('Please update all woocommerce extensions before activating.', 'wc').'</h3>';
-    @trigger_error(__('Please update all woocommerce extensions before activating.', 'wc'), E_USER_ERROR);
-
-    return false;
-}
-
-register_activation_hook(   __FILE__, 'prerequisite_met' );
-```
-
-### Enqueuing styles and scripts
-
-#### Theme directory and child theme directory
+### Theme directory and child theme directory
 
 - https://stackoverflow.com/questions/31797203/whats-the-difference-between-get-stylesheet-directory-uri-and-get-template-di
 
-#### Admin
+### Admin
 
 - https://blog.wplauncher.com/add-scripts-styles-to-specific-wordpress-admin-pages/
 - https://developer.wordpress.org/reference/hooks/admin_enqueue_scripts
 
-#### Media
+### Media
 
 - https://stackoverflow.com/questions/63002931/media-queries-and-wp-enqueue-style-doesnt-seem-to-work
 
-#### Enqueue and localize 
+### Enqueue and localize 
 
 In other words, put PHP variables into JS.
 
@@ -585,7 +573,7 @@ global.js
 })(jQuery);
 ```
 
-### Querying
+## Querying
 
 - https://www.billerickson.net/code/wp_query-arguments/
 - https://wordpress.stackexchange.com/questions/48516/filtering-posts-by-post-meta-data
@@ -609,6 +597,8 @@ $porftolioMovies = new WP_Query(
 
 **Example 2:** What is the $wpdb variable in WordPress, and how can you use it to improve the following code?
 
+- https://developer.wordpress.org/reference/classes/wpdb/
+
 ```php
 function perform_database_action(){
     mysql_query(“INSERT into table_name (col1, col2, col3) VALUES ('$value1','$value2', '$value3');
@@ -628,6 +618,48 @@ $wpdb->insert('table_name', [
 ```
 
 ## Plugin development related things
+
+### Making dependent plugins
+
+Take a `dependent/dependent.php` plugin file for example:
+
+```php
+
+/*
+Plugin Name: Dependent
+Description: Dependent
+Version:     1.0
+Author:      Ruslan Aliyev
+*/
+
+function prerequisite_met() 
+{ // https://wordpress.stackexchange.com/questions/189208/check-for-dependent-plugin-and-if-false-dont-activate-plugin
+    require_once( ABSPATH . '/wp-admin/includes/plugin.php' ) ;  // to get is_plugin_active() early
+    $dependency = 'woocommerce/woocommerce.php';
+
+    if(!file_exists(WP_PLUGIN_DIR . '/' . $dependency))
+    {
+        return show_error();
+    }   
+
+    if (!is_plugin_active($dependency)) 
+    {
+        return show_error();
+    }
+
+    return true ;
+}
+
+function show_error()
+{
+    echo '<h3>'.__('Please update all woocommerce extensions before activating.', 'wc').'</h3>';
+    @trigger_error(__('Please update all woocommerce extensions before activating.', 'wc'), E_USER_ERROR);
+
+    return false;
+}
+
+register_activation_hook(   __FILE__, 'prerequisite_met' );
+```
 
 ### Plugin's settings link
 
@@ -870,6 +902,16 @@ public function add_cron_interval( $schedules )
 - https://wordpress.stackexchange.com/a/193860
 - https://wordpress.stackexchange.com/a/100038
 
+## Job Queues
+
+https://www.hoangweb.com/thu-thuat/tao-queue-jobs-trong-wordpress
+
+## WP Heartbeat API
+
+Periodic AJAX communication between browser and server.
+
+https://www.hostinger.com/tutorials/wordpress-heartbeat
+
 ## Multi-lingual
 
 ### Plain WP
@@ -934,18 +976,6 @@ echo sprintf(__('msgstr_2', 'myplugin'), 'param-value');
 - https://www.youtube.com/watch?v=NR_zJjl-7cc
 - https://pressable.com/2020/01/21/what-is-wordpress-multisite-and-when-should-you-use-it/
 - https://wordpress.org/support/article/create-a-network/
-
-## Tracing hooks
-
-- https://developer.wordpress.org/reference/functions/_wp_call_all_hook/
-- https://pantheon.io/blog/tracing-wordpress-actions-and-filters
-- https://wordpress.stackexchange.com/questions/162862/how-to-get-wordpress-hooks-actions-run-sequence
-- https://wordpress.stackexchange.com/questions/105039/get-a-list-of-all-registered-actions
-- https://wordpress.stackexchange.com/questions/35076/how-can-i-see-all-the-actions-attached-to-an-add-action-hook
-- https://wordpress.stackexchange.com/questions/135857/how-to-list-the-hooks-and-order-of-execution-in-current-loading-page
-- https://www.rarst.net/wordpress/debug-wordpress-hooks/
-- https://wordpress.stackexchange.com/questions/250317/how-wordpress-understands-what-do-with-the-all-key-in-the-wp-filter-array
-- https://www.smashingmagazine.com/2012/02/inside-wordpress-actions-filters/
 
 ---
 
