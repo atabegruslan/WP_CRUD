@@ -844,6 +844,10 @@ Utilize WP's inbuild classes
 - https://www.slideshare.net/italianst4/your-custom-wordpress-admin-pages-suck/26-Tabs_div_classwrap_h2_classnavtabwrapper
 - https://nimblewebdeveloper.com/blog/add-tabs-to-wordpress-plugin-admin-page
 
+### Publish
+
+https://www.youtube.com/playlist?list=PLtaXuX0nEZk_MdFQAlp7v6N3TwEJUeuHq
+
 ## WP Cron
 
 WP Cron works on a per request basis. It does not rely on server's Cron. It can be problematic for less popular sites.
