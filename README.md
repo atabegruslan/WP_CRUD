@@ -480,6 +480,15 @@ https://help.rockcontent.com/how-to-export-and-import-posts-from-one-wordpress-t
 
 https://www.wpbeginner.com/plugins/how-to-rename-images-and-media-files-in-wordpress/
 
+### Turn off warnings
+
+```php
+ini_set('display_errors','Off');
+ini_set('error_reporting', E_ALL );
+define('WP_DEBUG', false);
+define('WP_DEBUG_DISPLAY', false);
+```
+
 ### Reinstall
 
 https://kinsta.com/blog/reinstall-wordpress/
