@@ -345,58 +345,6 @@ See `wp-content\themes\travellers_forum\page-create-news.php`
 
 ### Via AJAX:
 
-1. Create new page, in content input, text tab (not visual tab): 
-
-`<input id="testAjax" type="submit" value="Submit" />`
-
-2. Find out which theme your WP site is using, by looking at: `left hand side > appearances > themes`: see which is active (e.g.: `twentysixteen`)
-
-3. Create `wp-content\themes\twentysixteen\js\ajax.js`
-
-```
-jQuery(document).ready(function($){
-
-	$("#testAjax").click(function() {
-	
-		//alert( "Handler for .click() called." );
-		
-		console.log(theme_directory); //http://localhost/wordpress3/wp-content/themes/twentysixteen
-
-        $.ajax({url: theme_directory+ "/ajax_test.php", success: function(result){
-			alert(result);
-        }});		
-	});
-});
-```
-
-4. Add to `wp-content\themes\twentysixteen\functions.php` :
-
-```
-function add_style_js()
-{
-	wp_register_script('ajax', get_template_directory_uri().'/js/ajax.js');
-	wp_enqueue_script('ajax');
-}
-
-add_action('wp_footer', 'add_style_js', 5);
-```
-
-5. Add to `wp-content\themes\twentysixteen\header.php` :
-
-```
-<script>			
-	var theme_directory = "<?php echo get_template_directory_uri() ?>";
-</script>
-```
-
-6. Create `wp-content\themes\twentysixteen\ajax_test.php`
-
-```
-<?php
-	echo 'Test';
-?>
-```
-
 ### Making Custom Fields and Metaboxes Manually
 
 - https://www.hostinger.com/tutorials/wordpress-custom-fields
@@ -587,6 +535,130 @@ global.js
     });
 })(jQuery);
 ```
+
+## HTTP in WP
+
+### Manually
+
+1. Create new page, in content input, text tab (not visual tab): 
+
+`<input id="testAjax" type="submit" value="Submit" />`
+
+2. Find out which theme your WP site is using, by looking at: `left hand side > appearances > themes`: see which is active (e.g.: `twentysixteen`)
+
+3. Create `wp-content\themes\twentysixteen\js\ajax.js`
+
+```
+jQuery(document).ready(function($){
+
+	$("#testAjax").click(function() {
+
+		//alert( "Handler for .click() called." );
+
+		console.log(theme_directory); //http://localhost/wordpress3/wp-content/themes/twentysixteen
+
+		$.ajax({url: theme_directory+ "/ajax_test.php", success: function(result) {
+			alert(result);
+		}});		
+	});
+});
+```
+
+4. Add to `wp-content\themes\twentysixteen\functions.php` :
+
+```
+function add_style_js()
+{
+	wp_register_script('ajax', get_template_directory_uri().'/js/ajax.js');
+	wp_enqueue_script('ajax');
+}
+
+add_action('wp_footer', 'add_style_js', 5);
+```
+
+5. Add to `wp-content\themes\twentysixteen\header.php` :
+
+```
+<script>			
+	var theme_directory = "<?php echo get_template_directory_uri() ?>";
+</script>
+```
+
+6. Create `wp-content\themes\twentysixteen\ajax_test.php`
+
+```
+<?php
+	echo 'Test';
+?>
+```
+
+### Internally via wp_ajax_{$action} hook
+
+```js
+$("#whatever").on('click', function () {
+	const data = {
+		xxx: 'yyy',
+		action: 'action_name'
+	};
+
+	jQuery.ajax({
+		type: 'POST',
+		url: ajaxurl, // Always ajaxurl
+		data: data,
+		dataType: 'html'
+	}).done(function (res) {
+		res = JSON.parse(res);
+		// ...
+	});
+});
+```
+
+```php
+add_action('wp_ajax_action_name', 'handler');
+
+public function handler()
+{
+	$xxx = $_POST['xxx'];
+	// ...
+}
+```
+
+- https://developer.wordpress.org/reference/hooks/wp_ajax_action/
+
+### Externally
+
+```php
+$data = [
+	'headers' => [...],
+	'method'  => 'DELETE'
+];
+
+$response = wp_remote_request($url, $data);
+
+return json_decode($response['body']);
+```
+
+```php
+$data = [
+	'timeout'     => 30,
+	'redirection' => 5,
+	'headers' => [...],
+];
+
+$response = wp_remote_get($url, $data);
+
+return json_decode($response['body']);
+```
+
+```php
+$response = wp_remote_head($url);
+$httpcode = wp_remote_retrieve_response_code($response);
+return ($httpcode === 200);
+```
+
+- https://kinsta.com/blog/wordpress-http-api-part-1/#using-wordpress
+- https://www.sitepoint.com/the-wordpress-http-api/
+- https://hotexamples.com/examples/-/-/wp_remote_head/php-wp_remote_head-function-examples.html
 
 ## Querying
 
