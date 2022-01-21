@@ -662,6 +662,11 @@ return ($httpcode === 200);
 - https://www.sitepoint.com/the-wordpress-http-api/
 - https://hotexamples.com/examples/-/-/wp_remote_head/php-wp_remote_head-function-examples.html
 
+## Making API routes
+
+- https://www.sitepoint.com/wordpress-rest-api-adding-custom-routes/
+- https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
+
 ## Querying
 
 - https://www.billerickson.net/code/wp_query-arguments/
@@ -821,6 +826,10 @@ public function setup_db()
 
 This is the general idea: in `myplugin.php`, `include_once('page1.php');`
 
+### Menu and submenu items
+
+![](/Illustrations/plugin_menus.PNG)
+
 myplugin.php
 ```php
 add_action('admin_menu', 'register_menu');
@@ -867,11 +876,8 @@ public function register_other_page()
 }
 ```
 
-### Admin LHS plugin menu and submenu items
-
-![](/Illustrations/plugin_menus.PNG)
-
-https://wordpress.stackexchange.com/a/173393
+- Altering menu: https://github.com/atabegruslan/WP_CRUD/blob/master/more_tech_notes.md#alter-menu
+- Adding submenu: https://wordpress.stackexchange.com/questions/173392/add-sub-menu-page-in-your-plugin/173393#173393
 
 ### Tabs inside pages
 
@@ -1055,16 +1061,16 @@ echo sprintf(__('msgstr_2', 'myplugin'), 'param-value');
 
 - https://github.com/atabegruslan/WP_WooCommerce#language
 
-## Making API routes
-
-- https://www.sitepoint.com/wordpress-rest-api-adding-custom-routes/
-- https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
-
 ## Multisite
 
 - https://www.youtube.com/watch?v=NR_zJjl-7cc
 - https://pressable.com/2020/01/21/what-is-wordpress-multisite-and-when-should-you-use-it/
 - https://wordpress.org/support/article/create-a-network/
+
+## Misc
+
+- Check PHP version: https://wpbuffs.com/wordpress-php-version-check/ (Admin, Tools > Site Health, Server section)
+- Setting sizes: https://quadlayers.com/add-custom-image-sizes-in-wordpress/ (Admin, Settings > Media)
 
 ---
 
