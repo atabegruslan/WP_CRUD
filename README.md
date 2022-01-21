@@ -345,6 +345,8 @@ See `wp-content\themes\travellers_forum\page-create-news.php`
 
 ### Via AJAX:
 
+https://github.com/atabegruslan/WP_CRUD/blob/master/README.md#http-in-wp
+
 ### Making Custom Fields and Metaboxes Manually
 
 - https://www.hostinger.com/tutorials/wordpress-custom-fields
