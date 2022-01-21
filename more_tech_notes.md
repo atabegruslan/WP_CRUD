@@ -455,6 +455,8 @@ function custom_media_uploader( $strings )
 
 ### Make a Menu Item the default opened when opening Media Manager
 
+When clicking on "Add media" on a post editor page in admin.
+
 ```php
 add_action('admin_footer-post-new.php', 'set_media_manager_default_tab');
 add_action('admin_footer-post.php', 'set_media_manager_default_tab');
@@ -497,6 +499,8 @@ public function set_media_manager_default_tab()
 
 ## Alter Admin-side Post Editor
 
+### The Content Part
+
 `the_content` filter is for front side  
 `the_editor_content` filter is for admin side
 
@@ -514,6 +518,34 @@ public function alter_content_admin($content)
   return $content;
 }
 ```
+
+### Media within Contents
+
+#### Upon media added into contents
+
+```php
+add_filter('image_send_to_editor', 'alter_chosen_media_before_adding_into_content');
+public function alter_chosen_media_before_adding_into_content($html)
+{
+  // Modify the img tag
+  return $html;
+}
+```
+
+#### Make custom 'Insert media to content' button
+
+1. Make button using HTML in the frontend, use AJAX to call to a function in PHP.
+2. Imitate the function `image_media_send_to_editor`, let this be the function that handles the AJAX.
+
+- https://wordpress.stackexchange.com/questions/9838/add-new-insert-into-post-button-with-another-function
+  - https://developer.wordpress.org/reference/functions/image_media_send_to_editor/
+  - https://developer.wordpress.org/reference/functions/get_image_send_to_editor/
+  - https://developer.wordpress.org/reference/hooks/image_send_to_editor/
+- Relevant: https://wordpress.stackexchange.com/questions/9838/add-new-insert-into-post-button-with-another-function
+- Relevant: https://stackoverflow.com/questions/13279093/wordpress-custom-insert-into-post-button
+- Relevant: https://developer.wordpress.org/reference/functions/wp_insert_attachment/
+
+### Other parts
 
 `edit_form_before_permalink` for changing or prepending before the permalink
 
