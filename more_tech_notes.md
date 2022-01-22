@@ -538,7 +538,7 @@ public function alter_chosen_media_before_adding_into_content($html)
 2. Imitate the function `image_media_send_to_editor`, let this be the function that handles the AJAX.
 
 - https://wordpress.stackexchange.com/questions/9838/add-new-insert-into-post-button-with-another-function
-  - https://developer.wordpress.org/reference/functions/image_media_send_to_editor/
+  - https://developer.wordpress.org/reference/functions/wp_ajax_send_attachment_to_editor/
   - https://developer.wordpress.org/reference/functions/get_image_send_to_editor/
   - https://developer.wordpress.org/reference/hooks/image_send_to_editor/
 - Relevant: https://wordpress.stackexchange.com/questions/9838/add-new-insert-into-post-button-with-another-function
