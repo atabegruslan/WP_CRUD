@@ -935,7 +935,8 @@ Utilize WP's inbuild classes
 
 ### Publish
 
-https://www.youtube.com/playlist?list=PLtaXuX0nEZk_MdFQAlp7v6N3TwEJUeuHq
+- https://www.youtube.com/playlist?list=PLtaXuX0nEZk_MdFQAlp7v6N3TwEJUeuHq
+- https://www.godaddy.com/garage/how-to-publish-your-first-wordpress-plugin/
 
 ## WP Cron
 
