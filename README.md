@@ -662,6 +662,118 @@ return ($httpcode === 200);
 - https://www.sitepoint.com/the-wordpress-http-api/
 - https://hotexamples.com/examples/-/-/wp_remote_head/php-wp_remote_head-function-examples.html
 
+### Via Options 
+
+For saving a plugin's configs
+
+- https://codex.wordpress.org/Creating_Options_Pages
+- https://wordpress.stackexchange.com/questions/342433/error-options-page-not-found-saving-settings-page-with-tabs
+
+```
+<?php
+
+/*
+Plugin Name: Options
+Plugin URI:  https://github.com/atabegruslan/WP_CRUD
+Description: Test Saving Options Configs
+Version:     1.0
+Author:      Ruslan Aliyev
+Author URI:  https://github.com/atabegruslan
+License:     License
+License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+*/
+
+// create custom plugin settings menu
+add_action('admin_menu', 'options_plugin_create_menu');
+
+function options_plugin_create_menu() 
+{
+	//create new top-level menu
+	add_menu_page('Options Plugin Settings', 'Options', 'administrator', __FILE__, 'options_plugin_settings_page' , plugins_url('/images/icon.png', __FILE__) );
+
+	//call register settings function
+	add_action( 'admin_init', 'register_option_plugin_settings' );
+}
+
+function sanitize($input) 
+{
+    $options_array = get_option( 'options_option' ); // get saved data
+
+    $options_array['new_option_name'] = trim($input['new_option_name']);
+    $options_array['some_other_option'] = trim($input['some_other_option']);
+    $options_array['option_etc'] = trim($input['option_etc']);
+
+    return $options_array;
+}
+
+function register_option_plugin_settings() 
+{
+	// Register our settings
+	// register_setting( 'options_plugin_settings_group', 'new_option_name' );
+	// register_setting( 'options_plugin_settings_group', 'some_other_option' );
+	// register_setting( 'options_plugin_settings_group', 'option_etc' );
+
+	register_setting( 'options_plugin_settings_group', 'options_option', 'sanitize' );
+}
+
+function options_plugin_settings_page() 
+{
+    ?>
+        <div class="wrap">
+            <h1>Options Plugin</h1>
+            <form method="post" action="options.php">
+                <?php settings_fields( 'options_plugin_settings_group' ); ?>
+                <?php do_settings_sections( 'options_plugin_settings_group' ); ?>
+
+                <?php 
+                	$options           = get_option('options_option');
+                	$new_option_name   = $options['new_option_name'];
+                	$some_other_option = $options['some_other_option'];
+                	$option_etc        = $options['option_etc'];
+                ?>
+
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row">New Option Name</th>
+                        <td>
+                            <input 
+                                type="text" 
+                                name="options_option[new_option_name]" 
+                                value="<?php if (!empty($new_option_name)) echo esc_attr($new_option_name); ?>" 
+                            />
+                        </td>
+                    </tr>
+                     
+                    <tr valign="top">
+                        <th scope="row">Some Other Option</th>
+                        <td>
+                            <input 
+                                type="text" 
+                                name="options_option[some_other_option]" 
+                                value="<?php if (!empty($some_other_option)) echo esc_attr($some_other_option); ?>" 
+                            />
+                        </td>
+                    </tr>
+                    
+                    <tr valign="top">
+                        <th scope="row">Options, Etc.</th>
+                        <td>
+                            <input 
+                                type="text" 
+                                name="options_option[option_etc]" 
+                                value="<?php if (!empty($option_etc)) echo esc_attr($option_etc); ?>" 
+                            />
+                        </td>
+                    </tr>
+                </table>
+                
+                <?php submit_button(); ?>
+            </form>
+        </div>
+    <?php 
+}
+```
+
 ## Making API routes
 
 - https://www.sitepoint.com/wordpress-rest-api-adding-custom-routes/
