@@ -1180,6 +1180,10 @@ echo sprintf(__('msgstr_2', 'myplugin'), 'param-value');
 - https://pressable.com/2020/01/21/what-is-wordpress-multisite-and-when-should-you-use-it/
 - https://wordpress.org/support/article/create-a-network/
 
+## Logging
+
+- https://wordpress.stackexchange.com/questions/260236/how-to-put-logs-in-wordpress/260309#260309
+
 ## Misc
 
 - Check PHP version: https://wpbuffs.com/wordpress-php-version-check/ (Admin, Tools > Site Health, Server section)
