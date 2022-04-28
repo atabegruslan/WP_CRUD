@@ -778,6 +778,7 @@ function options_plugin_settings_page()
 
 - https://www.sitepoint.com/wordpress-rest-api-adding-custom-routes/
 - https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
+- https://www.youtube.com/watch?v=fFNXWinbgro
 
 ## Querying
 
