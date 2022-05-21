@@ -570,3 +570,7 @@ public function alter_permalink($post)
 
 Other useful hooks
 - https://wp-kama.com/123/hooks-on-the-edit-post-admin-page
+
+## Custom Elementor Widgets
+
+- https://github.com/Ruslan-Aliyev/WP_Elementor_Widget
