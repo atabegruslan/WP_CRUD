@@ -493,6 +493,53 @@ public function set_media_manager_default_tab()
 - https://wordpress.stackexchange.com/questions/265469/is-there-a-way-to-specify-the-tab-to-display-when-the-media-uploader-is-displaye/265536#265536
 - https://www.beginwp.com/how-to-make-the-upload-files-selected-by-default-when-inserting-media/
 
+### Media Manager - All common/useful events
+
+https://wordpress.stackexchange.com/questions/269099/how-to-capture-the-selectiontoggle-event-fired-by-wp-media/269181#269181
+
+```php
+add_action( 'admin_print_footer_scripts', 'wpse_media_library_selection_toggle' );
+function wpse_media_library_selection_toggle() { ?>
+<script type="text/javascript">
+    ( function( $ ) {
+        $( document ).ready( function() {
+
+            // Ensure the wp.media object is set, otherwise we can't do anything.
+            if ( wp.media ) 
+            {
+                wp.media.featuredImage.frame().on('selection:toggle', function() {
+                    console.log( 'image selected' );
+                });
+
+                wp.media.view.Modal.prototype.on( "ready", function() {
+                    console.log( "media modal ready" );
+
+                    wp.media.view.Modal.prototype.on( "open", function() {
+                        console.log( "media modal open" );
+
+                        // The sidebar boxes get deleted and recreated on each select - hack into this to do the same.
+                        var selection = wp.media.frame.state().get( "selection" );
+                        selection.on( "selection:single", function ( event ) {
+                            console.log( "selection:single" );
+                        } );
+
+                        selection.on( "selection:unsingle", function ( event ) {
+                            console.log( "selection:unsingle" );
+                        } );    
+                    });
+
+                    wp.media.view.Modal.prototype.on( "close", function() {
+                         console.log( "media modal close" );
+                    });
+                });
+            }
+
+        });
+    })( jQuery );
+</script><?php
+}
+```
+
 ## Alter Menu
 
 - https://whiteleydesigns.com/editing-wordpress-admin-menus/
