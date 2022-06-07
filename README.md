@@ -1185,6 +1185,16 @@ echo sprintf(__('msgstr_2', 'myplugin'), 'param-value');
 
 - https://wordpress.stackexchange.com/questions/260236/how-to-put-logs-in-wordpress/260309#260309
 
+## Cache
+
+`wp-content/cache/`
+
+> Look in your `wp-config.php` for a line that defines the constant `WP_CACHE`, if it’s still there remove it.
+
+- https://www.wpbeginner.com/wp-tutorials/how-to-turn-off-php-errors-in-wordpress/
+- https://www.ionos.com/digitalguide/hosting/blogs/wordpress-cache-clear/
+- GOOD: https://wordpress.org/support/topic/location-of-cache-files-2/
+
 ## Misc
 
 - Check PHP version: https://wpbuffs.com/wordpress-php-version-check/ (Admin, Tools > Site Health, Server section)
