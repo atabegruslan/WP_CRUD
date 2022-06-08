@@ -668,6 +668,7 @@ return ($httpcode === 200);
 For saving a plugin's configs
 
 - https://codex.wordpress.org/Creating_Options_Pages
+- https://developer.wordpress.org/plugins/settings/options-api/
 - https://wordpress.stackexchange.com/questions/342433/error-options-page-not-found-saving-settings-page-with-tabs
 
 ```
