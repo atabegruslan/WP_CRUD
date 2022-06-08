@@ -80,6 +80,10 @@ wp.data.dispatch('core/block-editor').insertBlock(aNewImage);
 - Relevant: https://github.com/WordPress/gutenberg/issues/16175
 - Relevant: https://wordpress.org/support/topic/getting-and-modifying-gutenberg-post-content-with-javascript/
 - Relevant: https://stackoverflow.com/questions/50065834/how-to-manually-programmatically-insert-a-block-in-gutenberg/51760723#51760723
+- Relevant: https://www.codingem.com/gutenberg-how-to-add-a-block-to-a-selected-block/
+- Relevant: https://awhitepixel.com/blog/wordpress-gutenberg-add-image-select-custom-block/ <sup>React</sup>
+- Relevant: https://kurtrank.me/gutenberg-custom-innerblocks-appender/ <sup>React</sup>
+- Relevant: https://www.liip.ch/en/blog/add-an-image-selector-to-a-gutenberg-block <sup>React</sup>
 
 ## Block Editor Docs
 
