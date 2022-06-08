@@ -39,6 +39,36 @@ wp.data.subscribe(() => {
 
 https://github.com/WordPress/gutenberg/issues/8655#issuecomment-940948868
 
+## Insert image into Image Block
+
+https://discord.com/channels/308083132177973249/456219418096041986/963805216518590544
+
+```js
+// First create a new instance of a block
+const myBlock = wp.blocks.createBlock('core/image',{url:'URL_TO_YOUR_IMAGE'});
+// Insert the block into the the Block editor
+wp.data.dispatch('core/editor').insertBlock(myBlock)
+```
+
+More updated way of doing that:
+
+Add image to an existing block:
+```js
+// `wp.data.select('core/editor').getBlockSelectionStart` is deprecated since version 5.3
+var currentlySelectedBlockId = wp.data.select('core/block-editor').getBlockSelectionStart();
+// `wp.data.dispatch('core/editor').updateBlockAttributes` is deprecated since version 5.3
+wp.data.dispatch('core/block-editor').updateBlockAttributes(currentlySelectedBlockId, {url:'URL_TO_YOUR_IMAGE'});
+```
+
+Creating a block and insert an image into it:
+```js
+var aNewImage = wp.blocks.createBlock('core/image',{url:'URL_TO_YOUR_IMAGE'});
+wp.data.dispatch('core/block-editor').insertBlock(aNewImage);
+```
+
+- NOTE: You can always use `wp.data.select('core/block-editor').getBlock('block-id')` to find a block's attributes
+- Its source: `wp-content\plugins\gutenberg\build\block-editor\index.js`
+
 ## Help
 
 https://discord.gg/eDMYBADR
