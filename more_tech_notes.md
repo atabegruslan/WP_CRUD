@@ -545,6 +545,7 @@ function wpse_media_library_selection_toggle() { ?>
 - In admin: https://quadlayers.com/add-custom-image-sizes-in-wordpress/ (Admin, Settings > Media)
 - Programatically: https://developer.wordpress.org/reference/functions/add_image_size/
 - Example: https://stackoverflow.com/questions/14200815/how-to-hook-into-wordpress-thumbnail-generation/26699842
+- Relevant: https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 
 ## Alter Menu
 
