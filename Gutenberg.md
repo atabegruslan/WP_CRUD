@@ -1,5 +1,12 @@
 # Gutenberg
 
+## Detect if is using Gutenberg
+
+- PHP: `get_current_screen()->is_block_editor()`
+- JS: `document.body.classList.contains( 'block-editor-page' )`
+- https://deluxeblogtips.com/how-to-detect-gutenberg-via-javascript-and-php/
+- https://wordpress.org/support/topic/if-gutenberg/
+
 ## Event for when new block is added
 
 ![](/Illustrations/Gutenberg_add_block.PNG)
