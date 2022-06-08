@@ -85,12 +85,34 @@ wp.data.dispatch('core/block-editor').insertBlock(aNewImage);
 - Relevant: https://kurtrank.me/gutenberg-custom-innerblocks-appender/ <sup>React</sup>
 - Relevant: https://www.liip.ch/en/blog/add-an-image-selector-to-a-gutenberg-block <sup>React</sup>
 
+## Feature Image
+
+Add Feature Image programatically
+
+```js
+wp.data.dispatch('core/editor').editPost(
+	{
+		featured_media: IMAGE/POST/ATTACHMENT_ID
+	}
+);
+```
+
+https://stackoverflow.com/questions/61293705/how-to-update-featured-image-programatically-in-gutenburg/61299736#61299736
+
+Relevant: https://wordpress.stackexchange.com/questions/326211/gutenberg-editor-get-post-featured-image-by-id
+
 ## Block Editor Docs
 
 - https://developer.wordpress.org/block-editor/
 - https://developer.wordpress.org/block-editor/reference-guides/filters/
 - https://developer.wordpress.org/block-editor/how-to-guides/javascript/loading-javascript/
 - https://developer.wordpress.org/block-editor/reference-guides/data/data-core-block-editor/
+
+## Other cool stuff
+
+- https://gist.github.com/codersantosh/189e1fb8317df050585fc206427ed1f8
+- On save: https://wordpress.stackexchange.com/questions/319054/trigger-javascript-on-gutenberg-block-editor-save
+- Custom block-editor-menu button: https://mariecomet.fr/en/2021/12/14/adding-options-controls-existing-gutenberg-block/
 
 ## Help
 
