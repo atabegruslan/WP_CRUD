@@ -78,6 +78,7 @@ wp.data.dispatch('core/block-editor').insertBlock(aNewImage);
 - Relevant: https://gist.github.com/bfintal/beebe46593df25326c0271f4cb227d96
 - Relevant: https://gist.github.com/skitzophrenia/fce13398ef22c81717252837d0b8cf1c
 - Relevant: https://github.com/WordPress/gutenberg/issues/16175
+- Relevant: https://wordpress.org/support/topic/getting-and-modifying-gutenberg-post-content-with-javascript/
 
 ## Block Editor Docs
 
