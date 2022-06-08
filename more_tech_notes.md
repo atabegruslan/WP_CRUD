@@ -592,6 +592,15 @@ public function alter_chosen_media_before_adding_into_content($html)
 - Relevant: https://stackoverflow.com/questions/13279093/wordpress-custom-insert-into-post-button
 - Relevant: https://developer.wordpress.org/reference/functions/wp_insert_attachment/
 
+`$html = get_image_send_to_editor($id, $caption, $title, $align, $url, $rel, $size, $alt);` returns a HTML string (eg: `<a href="https://blah/blah.png"><img src="https://blah/blah.png" alt="" class="align size- wp-image-42" /></a>`)
+
+In the frontend, you can insert that HTML string into the content by: `wp.media.editor.insert($html);` 
+
+Documentation of `wp.media.editor.insert`: http://atimmer.github.io/wordpress-jsdoc/-_enqueues_wp_media_editor.js.html#sunlight-1-line-728
+
+- Relevant: https://stackoverflow.com/questions/53205085/wp-media-insert-into-text-editor/53216745#53216745
+- Relevant: https://core.trac.wordpress.org/browser/tags/4.9.8/src/wp-includes/js/media-editor.js#L852
+
 ### Other parts
 
 `edit_form_before_permalink` for changing or prepending before the permalink
