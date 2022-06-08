@@ -83,6 +83,7 @@ wp.data.dispatch('core/block-editor').insertBlock(aNewImage);
 
 - https://developer.wordpress.org/block-editor/
 - https://developer.wordpress.org/block-editor/reference-guides/filters/
+- https://developer.wordpress.org/block-editor/how-to-guides/javascript/loading-javascript/
 - https://developer.wordpress.org/block-editor/reference-guides/data/data-core-block-editor/
 
 ## Help
