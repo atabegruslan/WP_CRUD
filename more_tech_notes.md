@@ -608,6 +608,28 @@ Documentation of `wp.media.editor.insert`: http://atimmer.github.io/wordpress-js
 - Relevant: https://stackoverflow.com/questions/53205085/wp-media-insert-into-text-editor/53216745#53216745
 - Relevant: https://core.trac.wordpress.org/browser/tags/4.9.8/src/wp-includes/js/media-editor.js#L852
 
+### Feature Image
+
+```js
+// Imitated from `wp-includes/js/media-editor.js` `wp.media.featuredImage.set`
+// - `wp-admin/includes/ajax-actions.php` `function wp_ajax_get_post_thumbnail_html()`
+// -- `wp-admin/includes/post.php function` `_wp_post_thumbnail_html($thumbnail_id = null, $post = null)`
+wp.media.post( 'get-post-thumbnail-html', {
+    post_id:      wp.media.view.settings.post.id,
+    thumbnail_id: IMAGE/POST/ATTACHMENT_ID,
+    _wpnonce:     wp.media.view.settings.post.nonce
+}).done( function( html ) {
+    if ('0' === html) {
+        window.alert( wp.i18n.__( 'Could not set that as the thumbnail image. Try a different attachment.' ) );
+        return;
+    }
+
+    jQuery('.inside', '#postimagediv').html(html);
+
+    jQuery('.media-modal-close').click();
+});
+```
+
 ### Other parts
 
 `edit_form_before_permalink` for changing or prepending before the permalink
