@@ -1,5 +1,9 @@
 # Elementor
 
+## Detect if is using Elementor
+
+`is_plugin_active('elementor/elementor.php')`
+
 ## Common Issues
 
 ### Including scripts
