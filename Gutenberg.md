@@ -75,6 +75,15 @@ wp.data.dispatch('core/block-editor').insertBlock(aNewImage);
 
 - NOTE: You can always use `wp.data.select('core/block-editor').getBlock('block-id')` to find a block's attributes
 - Its source: `wp-content\plugins\gutenberg\build\block-editor\index.js`
+- Relevant: https://gist.github.com/bfintal/beebe46593df25326c0271f4cb227d96
+- Relevant: https://gist.github.com/skitzophrenia/fce13398ef22c81717252837d0b8cf1c
+- Relevant: https://github.com/WordPress/gutenberg/issues/16175
+
+## Block Editor Docs
+
+- https://developer.wordpress.org/block-editor/
+- https://developer.wordpress.org/block-editor/reference-guides/filters/
+- https://developer.wordpress.org/block-editor/reference-guides/data/data-core-block-editor/
 
 ## Help
 
