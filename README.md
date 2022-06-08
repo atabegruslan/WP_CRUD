@@ -776,6 +776,10 @@ function options_plugin_settings_page()
 }
 ```
 
+### Upload files via AJAX
+
+https://gist.github.com/ahmadawais/0ccb8a32ea795ffac4adfae84797c19a
+
 ## Making API routes
 
 - https://www.sitepoint.com/wordpress-rest-api-adding-custom-routes/
