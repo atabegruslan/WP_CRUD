@@ -370,7 +370,8 @@ https://github.com/atabegruslan/WP_CRUD/blob/master/README.md#http-in-wp
 
 ## Template parts
 
-https://mekshq.com/passing-variables-via-get_template_part-wordpress/
+- https://mekshq.com/passing-variables-via-get_template_part-wordpress/
+- https://www.youtube.com/watch?app=desktop&v=5WnhIMqPLoY
 
 - If you need to pass data to template, use `include(locate_template('template-parts/xx/yy.php'))`
 - If you don't need to pass data to template, use `get_template_part('template-parts/xx/yy')`
