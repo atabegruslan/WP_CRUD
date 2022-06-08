@@ -1199,7 +1199,6 @@ echo sprintf(__('msgstr_2', 'myplugin'), 'param-value');
 ## Misc
 
 - Check PHP version: https://wpbuffs.com/wordpress-php-version-check/ (Admin, Tools > Site Health, Server section)
-- Setting sizes: https://quadlayers.com/add-custom-image-sizes-in-wordpress/ (Admin, Settings > Media)
 
 ---
 
