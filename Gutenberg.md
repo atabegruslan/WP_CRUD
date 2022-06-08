@@ -79,6 +79,7 @@ wp.data.dispatch('core/block-editor').insertBlock(aNewImage);
 - Relevant: https://gist.github.com/skitzophrenia/fce13398ef22c81717252837d0b8cf1c
 - Relevant: https://github.com/WordPress/gutenberg/issues/16175
 - Relevant: https://wordpress.org/support/topic/getting-and-modifying-gutenberg-post-content-with-javascript/
+- Relevant: https://stackoverflow.com/questions/50065834/how-to-manually-programmatically-insert-a-block-in-gutenberg/51760723#51760723
 
 ## Block Editor Docs
 
