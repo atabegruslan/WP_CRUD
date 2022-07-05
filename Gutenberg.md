@@ -121,6 +121,9 @@ var gallerySubBlocks = currentBlock.innerBlocks; // Get existing gallery blocks
 
 var galleryNewItemBlock = wp.blocks.createBlock('core/image', {url: {NEW_IMAGE_URL}});
 gallerySubBlocks.push(galleryNewItemBlock);
+var galleryNewItemBlock2 = wp.blocks.createBlock('core/image', {url: {ANOTHER_NEW_IMAGE_URL}});
+gallerySubBlocks.push(galleryNewItemBlock2);
+// and so on ...
 
 wp.data.dispatch('core/block-editor').updateBlock(currentlySelectedBlockId, {innerBlocks: gallerySubBlocks});
 
