@@ -48,6 +48,8 @@ https://github.com/WordPress/gutenberg/issues/8655#issuecomment-940948868
 
 ## Insert image into Image Block
 
+**The old way of doing that:**
+
 https://discord.com/channels/308083132177973249/456219418096041986/963805216518590544
 
 ```js
@@ -57,7 +59,7 @@ const myBlock = wp.blocks.createBlock('core/image',{url:'URL_TO_YOUR_IMAGE'});
 wp.data.dispatch('core/editor').insertBlock(myBlock)
 ```
 
-More updated way of doing that:
+**More updated way of doing that:**
 
 Add image to an existing block:
 ```js
@@ -84,6 +86,51 @@ wp.data.dispatch('core/block-editor').insertBlock(aNewImage);
 - Relevant: https://awhitepixel.com/blog/wordpress-gutenberg-add-image-select-custom-block/ <sup>React</sup>
 - Relevant: https://kurtrank.me/gutenberg-custom-innerblocks-appender/ <sup>React</sup>
 - Relevant: https://www.liip.ch/en/blog/add-an-image-selector-to-a-gutenberg-block <sup>React</sup>
+
+## Insert image(s) into Gallery Block
+
+**Create new gallery block:**
+
+https://discord.com/channels/308083132177973249/456219418096041986/964161623273111582
+
+```js
+var currentlySelectedBlockId = wp.data.select('core/block-editor').getBlockSelectionStart();
+
+var gallerySubBlocks = [];
+gallerySubBlocks[0] = wp.blocks.createBlock('core/image', {url: {IMAGE_URL}});
+gallerySubBlocks[1] = wp.blocks.createBlock('core/image', {url: {ANOTHER_IMAGE_URL}});
+// and so on ...
+
+wp.data.dispatch('core/block-editor').updateBlock(currentlySelectedBlockId, {innerBlocks: gallerySubBlocks});
+
+// Reset all blocks
+setTimeout(function () {
+	const getBlockList = () => wp.data.select('core/block-editor').getBlocks();
+	let blockList = getBlockList();
+	wp.data.dispatch('core/block-editor').resetBlocks(blockList);
+}, 1000);
+```
+
+**Update existing gallery block:**
+
+```js
+var currentlySelectedBlockId = wp.data.select('core/block-editor').getBlockSelectionStart();
+
+var currentBlock = wp.data.select('core/block-editor').getBlocksByClientId(currentlySelectedBlockId)[0];
+var gallerySubBlocks = currentBlock.innerBlocks; // Get existing gallery blocks
+
+var galleryNewItemBlock = wp.blocks.createBlock('core/image', {url: {NEW_IMAGE_URL}});
+gallerySubBlocks.push(galleryNewItemBlock);
+
+wp.data.dispatch('core/block-editor').updateBlock(currentlySelectedBlockId, {innerBlocks: gallerySubBlocks});
+
+// Reset all blocks
+setTimeout(function () {
+	const getBlockList = () => wp.data.select('core/block-editor').getBlocks();
+	let blockList = getBlockList();
+	wp.data.dispatch('core/block-editor').resetBlocks(blockList);
+}, 1000);
+```
 
 ## Feature Image
 
