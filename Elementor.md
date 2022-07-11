@@ -18,6 +18,10 @@ Reference: https://github.com/elementor/elementor-hello-world/blob/502959a810166
 
 See ALL Elementor hooks: https://developers.elementor.com/docs/hooks/php/
 
+### Create custom widgets
+
+https://github.com/Ruslan-Aliyev/WP_Elementor_Widget
+
 ## Help
 
 https://discord.gg/54tt3Yj4
