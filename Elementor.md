@@ -22,6 +22,69 @@ See ALL Elementor hooks: https://developers.elementor.com/docs/hooks/php/
 
 https://github.com/Ruslan-Aliyev/WP_Elementor_Widget
 
+### Insert image (URL) into Elementor programatically
+
+#### JS
+
+```js
+// Imitated from: wp-content\plugins\elementor\assets\js\editor-document.js container.model.get('elements')
+var iframe = document.getElementById("elementor-preview-iframe");
+var element = iframe.contentWindow.document.getElementsByClassName("elementor-element-editable")[0];
+
+if (element) 
+{
+    let elementId = $(element).attr('data-id');
+    let imgTag = element.getElementsByTagName("img")[0];
+    imgTag.setAttribute('src', IMAGE_URL);
+    $('.elementor-control-media__preview').attr('style', 'background-image: url("' + IMAGE_URL + '");');
+
+    let document = elementor.documents.getCurrent();
+    let container = document.container;
+    let elements = [];
+
+    if (elementor.config.document.panel.has_elements) 
+    {
+        let elementTests = container.model.get('elements');
+        elements = elementTests.models;
+    }
+
+    elements.forEach(element => {
+        checkElementImage(element);
+    });
+    
+    function checkElementImage(element) 
+    {
+        if (element.attributes.elements.length) 
+        {
+            let elementItem = element.attributes.elements.models;
+
+            elementItem.forEach(elementChild => {
+                checkElementImage(elementChild);
+            });
+        } 
+        else 
+        {
+            if (element.attributes.widgetType === "image" && elementId === element.attributes.id) 
+            {
+                //   THE PART THAT ACTUALLY DOES THE INSERTION
+                element.attributes.settings.attributes = {
+                    image: {
+                        url: IMAGE_URL,
+                        alt: "",
+                        source: "Custom"
+                    },
+                    image_size: $('.elementor-control-image_size select[data-setting="image_size"]').val()
+                };
+                // ( THE PART THAT ACTUALLY DOES THE INSERTION )
+            }
+        }
+    }
+}
+```
+
+![Elementor1](https://user-images.githubusercontent.com/20809372/178475851-c5e3da8a-0ea6-49de-937d-0c47556a913f.png)
+
+
 ## Help
 
 https://discord.gg/54tt3Yj4
