@@ -65,7 +65,7 @@ if (element)
         else 
         {
             if (element.attributes.widgetType === "image" && elementId === element.attributes.id) 
-            {
+            { // For Elementor Basic - Image widget and Elementor General - Image Box widget
                 //   THE PART THAT ACTUALLY DOES THE INSERTION
                 element.attributes.settings.attributes = {
                     image: {
