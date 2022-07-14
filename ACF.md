@@ -6,18 +6,18 @@
 
 Before and after
 
-![image](https://user-images.githubusercontent.com/20809372/179023046-4d36f8e7-b1a2-4317-88f9-7eca393fa042.png)
+![](https://user-images.githubusercontent.com/20809372/179023046-4d36f8e7-b1a2-4317-88f9-7eca393fa042.png)
 
-![image](https://user-images.githubusercontent.com/20809372/179019752-88bc1dad-27a0-46e6-96bf-6bb8d8dd3740.png)
+![](https://user-images.githubusercontent.com/20809372/179024475-9b11fc2f-1c8c-4795-85cc-05fb55ece180.png)
 
 ```js
-$(`.acf-field-${acfIdentifier} .acf-input .show-if-value img`).attr({
-    src: IMAGE_URL,
+$(`.acf-field-${acfIdentifier} .acf-input .show-if-value img`).attr({ // 1. acfIdentifier
+    src: IMAGE_URL, // 2. Set image URL
     alt: ''
 });
 
-$(`.acf-field-${acfIdentifier} .acf-input input[type="hidden"]`).val(WP_POST/ATTACHMENT_ID);
-$(`.acf-field-${acfIdentifier} .acf-input .acf-image-uploader`).addClass('has-value');
+$(`.acf-field-${acfIdentifier} .acf-input input[type="hidden"]`).val(WP_POST/ATTACHMENT_ID); // 3. Set attachment ID
+$(`.acf-field-${acfIdentifier} .acf-input .acf-image-uploader`).addClass('has-value'); // 4. Add 'has-value' class
 ```
                 
 Imitated from `wp-content/plugins/advanced-custom-fields/assets/build/js/acf-input.js` 
@@ -28,24 +28,24 @@ Imitated from `wp-content/plugins/advanced-custom-fields/assets/build/js/acf-inp
 
 Before and after
 
-![image](https://user-images.githubusercontent.com/20809372/179023115-0037f37f-8e0d-4e86-9def-f6e80f957175.png)
+![](https://user-images.githubusercontent.com/20809372/179023115-0037f37f-8e0d-4e86-9def-f6e80f957175.png)
 
-![image](https://user-images.githubusercontent.com/20809372/179020332-dbcea795-77e8-42d9-b5d5-8be8363454aa.png)
+![](https://user-images.githubusercontent.com/20809372/179024523-888b812b-6e9e-45b1-81aa-ebc7eef93bd5.png)
 
 ```js
-jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value img`).attr({
-    src: "<?php echo includes_url('/images/media/default.png'); ?>",
+jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value img`).attr({ // 1. acfIdentifier
+    src: "<?php echo includes_url('/images/media/default.png'); ?>", // 2. Set icon
     alt: '',
     title: ''
 });
 
 jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value [data-name="title"]`).text('');
-jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value [data-name="filename"]`).text(IMAGE_NAME).attr('href', IMAGE_URL);
+jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value [data-name="filename"]`).text(IMAGE_NAME).attr('href', IMAGE_URL); // 3. Set file URL and name
 jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value [data-name="filesize"]`).text('');
 
-jQuery(`.acf-field-${acfIdentifier} .acf-input input[type="hidden"]`).val(WP_POST/ATTACHMENT_ID);
+jQuery(`.acf-field-${acfIdentifier} .acf-input input[type="hidden"]`).val(WP_POST/ATTACHMENT_ID); // 4. Set attachment ID
 
-jQuery(`.acf-field-${acfIdentifier} .acf-input .acf-file-uploader`).addClass('has-value');
+jQuery(`.acf-field-${acfIdentifier} .acf-input .acf-file-uploader`).addClass('has-value'); // 5. Add 'has-value' class
 ```
 
 Imitated from `wp-content/plugins/advanced-custom-fields/assets/build/js/acf-input.js` 
