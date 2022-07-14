@@ -30,7 +30,7 @@ Before and after
 
 ![](https://user-images.githubusercontent.com/20809372/179023115-0037f37f-8e0d-4e86-9def-f6e80f957175.png)
 
-![](https://user-images.githubusercontent.com/20809372/179024523-888b812b-6e9e-45b1-81aa-ebc7eef93bd5.png)
+![](https://user-images.githubusercontent.com/20809372/179025257-58e729a3-6617-40d6-9120-21d7e6b59588.png)
 
 ```js
 jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value img`).attr({ // 1. acfIdentifier
