@@ -2,6 +2,9 @@
 
 ## Programatically insert media
 
+Useful resources:
+- https://www.advancedcustomfields.com/resources/javascript-api/#functions-getfield
+
 ### ACF Basic - Image
 
 Before and after
@@ -11,13 +14,12 @@ Before and after
 ![](https://user-images.githubusercontent.com/20809372/179024475-9b11fc2f-1c8c-4795-85cc-05fb55ece180.png)
 
 ```js
-$(`.acf-field-${acfIdentifier} .acf-input .show-if-value img`).attr({ // 1. acfIdentifier
-    src: IMAGE_URL, // 2. Set image URL
-    alt: ''
+acf.getField(`field_${acfIdentifier}`).$el.find('.acf-input .show-if-value img').attr({ // 1. acfIdentifier
+    src: IMAGE_URL // 2. Set image URL
 });
 
-$(`.acf-field-${acfIdentifier} .acf-input input[type="hidden"]`).val(WP_POST/ATTACHMENT_ID); // 3. Set attachment ID
-$(`.acf-field-${acfIdentifier} .acf-input .acf-image-uploader`).addClass('has-value'); // 4. Add 'has-value' class
+acf.getField(`field_${acfIdentifier}`).$el.find('.acf-input input[type="hidden"]').val(WP_POST/ATTACHMENT_ID); // 3. Set attachment ID
+acf.getField(`field_${acfIdentifier}`).$el.find('.acf-input .acf-image-uploader').addClass('has-value'); // 4. Add 'has-value' class
 ```
                 
 Imitated from `wp-content/plugins/advanced-custom-fields/assets/build/js/acf-input.js` 
@@ -33,19 +35,13 @@ Before and after
 ![](https://user-images.githubusercontent.com/20809372/179025257-58e729a3-6617-40d6-9120-21d7e6b59588.png)
 
 ```js
-jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value img`).attr({ // 1. acfIdentifier
-    src: "<?php echo includes_url('/images/media/default.png'); ?>", // 2. Set icon
-    alt: '',
-    title: ''
+acf.getField(`field_${acfIdentifier}`).$el.find('.acf-input .show-if-value img').attr({ // 1. acfIdentifier
+    src: "<?php echo includes_url('/images/media/default.png'); ?>" // 2. Set icon
 });
 
-jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value [data-name="title"]`).text('');
-jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value [data-name="filename"]`).text(IMAGE_NAME).attr('href', IMAGE_URL); // 3. Set file URL and name
-jQuery(`.acf-field-${acfIdentifier} .acf-input .show-if-value [data-name="filesize"]`).text('');
-
-jQuery(`.acf-field-${acfIdentifier} .acf-input input[type="hidden"]`).val(WP_POST/ATTACHMENT_ID); // 4. Set attachment ID
-
-jQuery(`.acf-field-${acfIdentifier} .acf-input .acf-file-uploader`).addClass('has-value'); // 5. Add 'has-value' class
+acf.getField(`field_${acfIdentifier}`).$el.find('.acf-input .show-if-value [data-name="filename"]').text(IMAGE_NAME).attr('href', IMAGE_URL); // 3. Set file URL and name
+acf.getField(`field_${acfIdentifier}`).$el.find('.acf-input input[type="hidden"]').val(WP_POST/ATTACHMENT_ID); // 4. Set attachment ID
+acf.getField(`field_${acfIdentifier}`).$el.find('.acf-input .acf-file-uploader').addClass('has-value'); // 5. Add 'has-value' class
 ```
 
 Imitated from `wp-content/plugins/advanced-custom-fields/assets/build/js/acf-input.js` 
