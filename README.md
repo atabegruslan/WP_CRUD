@@ -1176,6 +1176,7 @@ echo sprintf(__('msgstr_2', 'myplugin'), 'param-value');
 
 - https://carlalexander.ca/placeholders-wordpress-translations/
 - https://www.flippercode.com/make-a-wordpress-plugin-multilingual/
+- https://wpastra.com/docs/complete-list-wordpress-locale-codes/
 
 ### In WooCommerce
 
