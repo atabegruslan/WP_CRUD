@@ -657,6 +657,8 @@ public function alter_permalink($post)
 Other useful hooks
 - https://wp-kama.com/123/hooks-on-the-edit-post-admin-page
 
-## Custom Elementor Widgets
+## Post's parts (in admin editor)
 
-- https://github.com/Ruslan-Aliyev/WP_Elementor_Widget
+![](https://user-images.githubusercontent.com/20809372/180630337-9ea0aa5e-7feb-47fe-8048-1fa8c2a0667b.png)
+
+Taken from https://code.tutsplus.com/articles/integrating-with-wordpress-ui-meta-boxes-on-custom-pages--wp-26843
