@@ -542,6 +542,7 @@ function wpse_media_library_selection_toggle() { ?>
 
 ## Add Custom Image Sizes
 
+- https://perishablepress.com/disable-wordpress-generated-images
 - Add a new custom size programatically: https://developer.wordpress.org/reference/functions/add_image_size/
 - Add a new custom size in admin: https://quadlayers.com/add-custom-image-sizes-in-wordpress/ (Admin, Settings > Media)
 - Retrieve: https://wordpress.stackexchange.com/questions/33532/how-to-get-a-list-of-all-the-possible-thumbnail-sizes-set-within-a-theme/251602#251602
