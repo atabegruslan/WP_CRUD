@@ -626,7 +626,10 @@ public function handler()
 }
 ```
 
-- https://developer.wordpress.org/reference/hooks/wp_ajax_action/
+- https://developer.wordpress.org/reference/hooks/wp_ajax_action
+- https://developer.wordpress.org/reference/hooks/wp_ajax_nopriv_action
+- https://www.hoangweb.com/wordpress/su-dung-ajax-trong-wordpress
+- https://wordpress.stackexchange.com/a/190299
 
 ### Externally
 
