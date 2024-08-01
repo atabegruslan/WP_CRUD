@@ -595,7 +595,9 @@ add_action('wp_footer', 'add_style_js', 5);
 ?>
 ```
 
-### Internally via wp_ajax_{$action} hook
+### Internally via wp_ajax_{$action} hook (needs login)
+
+Access by `{domain}/wp-admin/admin-ajax.php?action=get_xxxs&per_page=5`
 
 ```js
 $("#whatever").on('click', function () {
@@ -626,10 +628,94 @@ public function handler()
 }
 ```
 
+### Internally via wp_ajax_nopriv_{$action} hook (no login needed)
+
+eg
+```php
+add_action('wp_ajax_nopriv_get_xxx', 'get_xxx');
+function get_xxx()
+{
+    global $wpdb;
+
+    $per_page = $_GET['per_page'] ?? -1;
+    $page = $_GET['page'] ?? 1;
+
+    $table = $wpdb->prefix . 'xxxs';
+    $sql = "SELECT * FROM {$table} ORDER BY id ASC LIMIT %d OFFSET %d"; 
+    $data = $wpdb->get_results($wpdb->prepare($sql, $per_page, $page), ARRAY_A);
+
+    wp_send_json(['xxx' => $data]);
+}
+```
+or
+```php
+add_action('wp_ajax_nopriv_get_xxx', 'get_xxx');
+function get_xxx()
+{
+    $per_page = $_GET['per_page'] ?? -1;
+    $page = $_GET['page'] ?? 1;
+
+    $args = array(
+        'post_type' => 'xxx',
+        'posts_per_page' => $per_page,
+        'paged' => $page,
+    );
+    $wp_query = new WP_Query($args);
+    wp_reset_postdata();
+
+    wp_send_json(['xxx' => $wp_query]);
+}
+```
+
 - https://developer.wordpress.org/reference/hooks/wp_ajax_action
 - https://developer.wordpress.org/reference/hooks/wp_ajax_nopriv_action
+- https://wordpress.stackexchange.com/questions/409137/get-vs-get-query-var
 - https://www.hoangweb.com/wordpress/su-dung-ajax-trong-wordpress
 - https://wordpress.stackexchange.com/a/190299
+
+### Internally via `rest_api_init`
+
+Access by `{domain}/wp-json/api/v1/xxxs?page=1&per_page=5`
+
+```php
+$apiPrefix = 'api/v1';
+
+add_action( 'rest_api_init', function () use ($apiPrefix) {
+    register_rest_route($apiPrefix, '/xxxs', [
+        'methods' => 'GET',
+        'callback' => 'api_get_xxxs',
+    ]);
+    register_rest_route($apiPrefix, '/infos', [
+        'methods' => 'GET',
+        'callback' => 'api_get_infos',
+    ]);
+} );
+
+function api_get_xxxs()
+{
+    $per_page = $_GET['per_page'] ?? -1;
+    $page = $_GET['page'] ?? 1;
+
+    $args = array(
+        'post_type' => 'xxx',
+        'post_status' => 'publish',
+        'posts_per_page' => $per_page,
+        'paged' => $page,
+    );
+
+    $projects = get_posts($args);
+
+    return $xxxs;
+}
+function api_get_infos()
+{
+
+}
+```
+
+- https://www.hostinger.com/tutorials/wordpress-rest-api
+- https://stackoverflow.com/questions/53126137/wordpress-rest-api-custom-endpoint-with-url-parameter
+- https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints
 
 ### Externally
 
